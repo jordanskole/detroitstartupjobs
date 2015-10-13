@@ -35,5 +35,5 @@ gulp.task('default', ['clean'], function () {
  */
 gulp.task('deploy', function() {
   return gulp.src('./dist/**/*')
-    .pipe(ghPages({force: true}));
+    .pipe(ghPages({push: true}));
 });
