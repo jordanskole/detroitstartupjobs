@@ -34,6 +34,6 @@ gulp.task('default', ['clean'], function () {
  *  Push everything up to gh-pages
  */
 gulp.task('deploy', function() {
-  return gulp.src('./dist/**/*')
+  return gulp.src('dist/**/*')
     .pipe(ghPages({force: true}));
 });
