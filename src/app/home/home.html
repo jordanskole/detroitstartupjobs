@@ -1,1 +1,29 @@
-<h1>{{ data }}</h1>
+<md-toolbar md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings">
+      <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+    </md-button>
+    <h2>
+      <span>Detroit Startup Jobs</span>
+    </h2>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Favorite">
+      <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="More">
+      <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-card layout="row">
+  <div flex flex-offset="33">
+
+    <md-list>
+      <md-list-item ng-repeat="job in jobs">
+        {{ job.title }}
+      </md-list-item>
+    </md-list>
+
+  </div>
+</md-card>
