@@ -7,6 +7,9 @@
       <span>Detroit Startup Jobs</span>
     </h2>
     <span flex></span>
+    <md-button class="md-icon-button" aria-label="Saved Jobs">
+      <md-icon md-font-library="material-icons">bookmark</md-icon>
+    </md-button>
     <md-button class="md-icon-button" aria-label="Search">
       <md-icon md-font-library="material-icons">search</md-icon>
     </md-button>
@@ -14,7 +17,7 @@
       <md-icon md-font-library="material-icons">add_alert</md-icon>
     </md-button>
     <md-button class="md-icon-button" aria-label="Account">
-      <md-icon md-font-library="material-icons">face</md-icon>
+      <md-icon md-font-library="material-icons">account_circle</md-icon>
     </md-button>
   </div>
 </md-toolbar>
@@ -23,13 +26,26 @@
 <div layout="row">
   <div flex></div>
 
-  <md-card flex="80">
-    <md-list>
-      <md-list-item ng-repeat="job in home.jobs">
-        {{ job.title }}
-      </md-list-item>
-    </md-list>
-  </md-card>
+  <div flex="80">
+
+    <md-subheader>
+      New Job Postings:
+    </md-subheader>
+
+    <md-card>
+      <md-list>
+          <md-list-item ng-repeat="job in home.jobs" class="md-3-line">
+            <md-icon md-font-library="material-icons" ng-class="md-avatar-icon">favorite</md-icon>
+            <div class="md-list-item-text">
+            <h3>{{ job.title }}</h3>
+            <p>{{ job.description }}</p>
+            <md-chips readonly="true" ng-model="job.skills" ng-class="md-primary">
+            </md-chips>
+          </div>
+          </md-list-item>
+      </md-list>
+    </md-card>
+  </div>
 
   <div flex></div>
 </div>

@@ -19,8 +19,8 @@
 
     // set our material design theme
     $mdThemingProvider.theme('default')
-     .primaryPalette('teal')
-     .accentPalette('orange')
+     .primaryPalette('cyan')
+     .accentPalette('teal')
      .backgroundPalette('grey');
   }
 
