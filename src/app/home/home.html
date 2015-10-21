@@ -26,14 +26,13 @@
 <div layout="row">
   <div flex></div>
 
-  <div flex="80">
-
+  <md-content flex="80" layout="column">
     <md-subheader>
       New Job Postings:
     </md-subheader>
 
     <md-card>
-      <md-list layout-fill>
+      <md-list class="md-no-style" layout-fill style="padding: 0px;">
           <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()" layout-fill>
             <md-icon md-font-library="material-icons" ng-class="md-avatar-icon">favorite</md-icon>
             <div class="md-list-item-text">
@@ -42,11 +41,12 @@
             <md-chips readonly="true" ng-model="job.skills" ng-class="md-primary">
             </md-chips>
           </div>
+          <md-divider></md-divider>
           </md-list-item>
       </md-list>
     </md-card>
-    
-  </div>
+
+  </md-content><!-- column -->
 
   <div flex></div>
 </div>
