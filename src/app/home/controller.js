@@ -6,17 +6,21 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController ($mdSidenav) {
+  function HomeController ($log) {
 
     var vm = this;
 
     vm.toggleNav = function () {
-      console.log('Clicked the menu!');
+      $log.log('Clicked the menu!');
     }
 
     vm.goToSkill = function (chip) {
-      console.log('Clicked on Skill:');
-      console.log(chip);
+      $log.log('Clicked on Skill:');
+      $log.log(chip);
+    }
+
+    vm.goToJob = function () {
+      $log.log('Clicked on Job:');
     }
 
     vm.jobs = [
