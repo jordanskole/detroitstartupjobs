@@ -6,9 +6,13 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController () {
+  function HomeController ($mdSidenav) {
 
     var vm = this;
+
+    vm.toggleNav = function () {
+      console.log('Clicked the menu!');
+    }
 
     vm.jobs = [
       {

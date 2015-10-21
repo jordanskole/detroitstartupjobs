@@ -1,26 +1,35 @@
-<md-toolbar>
+<md-toolbar class="md-whiteframe-z3">
   <div class="md-toolbar-tools">
-    <md-button class="md-icon-button" aria-label="Settings">
+    <md-button ng-click="home.toggleNav()" class="md-icon-button" aria-label="Settings">
       <md-icon md-font-library="material-icons">menu</md-icon>
     </md-button>
     <h2>
       <span>Detroit Startup Jobs</span>
     </h2>
     <span flex></span>
+    <md-button class="md-icon-button" aria-label="Search">
+      <md-icon md-font-library="material-icons">search</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Notifications">
+      <md-icon md-font-library="material-icons">add_alert</md-icon>
+    </md-button>
     <md-button class="md-icon-button" aria-label="Account">
       <md-icon md-font-library="material-icons">face</md-icon>
     </md-button>
   </div>
 </md-toolbar>
 
-<md-card layout="row">
-  <div flex flex-offset="33">
 
+<div layout="row">
+  <div flex></div>
+
+  <md-card flex="80">
     <md-list>
       <md-list-item ng-repeat="job in home.jobs">
         {{ job.title }}
       </md-list-item>
     </md-list>
+  </md-card>
 
-  </div>
-</md-card>
+  <div flex></div>
+</div>
