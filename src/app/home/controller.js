@@ -3,13 +3,14 @@
 
   angular
     .module('detroitstartupjobs')
-    .controller('HomeCtrl', HomeCtrl);
+    .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeCtrl($scope) {
-    $scope.data = "Hello World"
+  function HomeController () {
 
-    $scope.jobs = [
+    var vm = this;
+
+    vm.jobs = [
       {
         "title": "Campus Director",
         "created_on": "Friday",
