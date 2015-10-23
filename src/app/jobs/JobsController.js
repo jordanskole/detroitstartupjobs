@@ -3,16 +3,12 @@
 
   angular
     .module('detroitstartupjobs')
-    .controller('HomeController', HomeController);
+    .controller('JobsController', JobsController);
 
   /** @ngInject */
-  function HomeController ($log) {
+  function JobsController ($log, $mdDialog) {
 
     var vm = this;
-
-    vm.toggleNav = function () {
-      $log.log('Clicked the menu!');
-    }
 
     vm.goToSkill = function (chip) {
       $log.log('Clicked on Skill:');
@@ -21,6 +17,17 @@
 
     vm.goToJob = function () {
       $log.log('Clicked on Job:');
+    }
+
+    vm.createJob = function (ev) {
+      $mdDialog.show({
+        controller: 'CreateDialogController',
+        controllerAs: 'dialog',
+        templateUrl: 'app/jobs/create.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true
+      });
     }
 
     vm.jobs = [
