@@ -10,6 +10,11 @@
 
     var vm = this;
 
+    vm.job = {
+      "salary": 45,
+      "skills": []
+    }
+
     vm.cancel = function () {
       $mdDialog.cancel();
     }
