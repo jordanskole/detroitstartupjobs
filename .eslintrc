@@ -9,6 +9,8 @@
     "angular": true,
     "module": true,
     "inject": true,
+    "moment": true,
+    "_": true,
     "Firebase": true,
     "FIREBASE_URL": true
   }

@@ -16,9 +16,32 @@
     <md-button class="md-icon-button" aria-label="Notifications">
       <md-icon md-font-library="material-icons">add_alert</md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="Account">
-      <md-icon md-font-library="material-icons">account_circle</md-icon>
-    </md-button>
+
+    <md-menu md-position-mode="target-right target">
+     <!-- Trigger element is a md-button with an icon -->
+     <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open Account menu">
+       <md-icon md-menu-origin md-font-library="material-icons">account_circle</md-icon>
+     </md-button>
+     <md-menu-content width="4" class="md-accent">
+       <md-menu-item>
+         <md-button ng-click="doSomething()">
+            <div layout="row">
+              <p flex>Login</p>
+              <md-icon md-menu-align-target md-font-library="material-icons" style="margin: auto 3px auto 0;">lock_open</md-icon>
+            </div>
+         </md-button>
+       </md-menu-item>
+       <md-menu-item>
+         <md-button ng-click="doSomething()">
+           <div layout="row">
+             <p flex>Register</p>
+             <md-icon md-menu-align-target md-font-library="material-icons" style="margin: auto 3px auto 0;">person_add</md-icon>
+           </div>
+         </md-button>
+       </md-menu-item>
+     </md-menu-content>
+    </md-menu>
+
     <md-button ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add Job">
       <md-icon md-font-library="material-icons">add</md-icon>
     </md-button>
