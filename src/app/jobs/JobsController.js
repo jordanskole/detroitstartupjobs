@@ -6,7 +6,7 @@
     .controller('JobsController', JobsController);
 
   /** @ngInject */
-  function JobsController ($log, $mdDialog) {
+  function JobsController ($log, $mdDialog, $mdToast) {
 
     var vm = this;
 
@@ -27,6 +27,10 @@
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose: true
+      })
+      .then( function (job) {
+        vm.jobs.push(job);
+        $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));
       });
     }
 

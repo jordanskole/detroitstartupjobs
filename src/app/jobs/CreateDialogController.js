@@ -19,6 +19,10 @@
       $mdDialog.cancel();
     }
 
+    vm.save = function () {
+      $mdDialog.hide(vm.job);
+    }
+
   }
 
 })();
