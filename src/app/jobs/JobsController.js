@@ -6,9 +6,10 @@
     .controller('JobsController', JobsController);
 
   /** @ngInject */
-  function JobsController ($log, $mdDialog, $mdToast) {
+  function JobsController ($log, $mdDialog, $mdToast, Jobs) {
 
     var vm = this;
+    vm.jobs = Jobs.$array;
 
     vm.goToSkill = function (chip) {
       $log.log('Clicked on Skill:');
@@ -29,40 +30,11 @@
         clickOutsideToClose: true
       })
       .then( function (job) {
-        vm.jobs.push(job);
+        Jobs.$array.$add(job);
         $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));
       });
     }
 
-    vm.jobs = [
-      {
-        "title": "Campus Director",
-        "created_on": "Friday",
-        "salary": 88000,
-        "employer": "The Iron Yard",
-        "location": "Detroit",
-        "skills": ["JavaScript", "iOS", "Android", "Adobe Illustrator"],
-        "description": "A position opening The Iron Yard location in Detroit, and working with students and community partners."
-      },
-      {
-        "title": "Post Production Coordinator",
-        "created_on": "Wed",
-        "salary": 30000,
-        "employer": "Heather Read Photography & Design",
-        "location": "Royal Oak",
-        "skills": ["Adobe Photoshop"],
-        "description": "You will be responsible for editing Heather's photos during post-production, and working with Adobe Photoshop actions."
-      },
-      {
-        "title": "Junior Front End Developer",
-        "created_on": "Wed",
-        "salary": 45000,
-        "employer": "Gas Station TV",
-        "location": "Detroit",
-        "skills": ["JavaScript", "HTML", "CSS"],
-        "description": "A great position to grow as into a robust front-end developer."
-      }
-    ]
   }
 
 })();

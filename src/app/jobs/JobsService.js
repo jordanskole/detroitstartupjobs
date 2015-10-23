@@ -6,9 +6,25 @@
     .factory('Jobs', Jobs);
 
   /** @ngInject */
-  function Jobs($firebaseObject) {
+  function Jobs(FIREBASE_URL, $firebaseArray, $firebaseObject) {
     var itemsRef = new Firebase(FIREBASE_URL + "/jobs");
-    return $firebaseObject(itemsRef);
+
+    var Jobs = $firebaseArray.$extend({
+      filterJobsByCompany: function (company) {
+
+      },
+      filterJobsBySkill: function (skill) {
+
+      },
+      filterJobsBySalary: function (min, max) {
+
+      }
+    });
+
+    return {
+      "$array": Jobs(itemsRef),
+      "$object": $firebaseObject(itemsRef)
+    };
   }
 
 })();
