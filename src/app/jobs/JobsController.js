@@ -6,7 +6,7 @@
     .controller('JobsController', JobsController);
 
   /** @ngInject */
-  function JobsController ($log, $mdDialog, $mdToast, Jobs) {
+  function JobsController ($log, $mdDialog, $document, $mdToast, Jobs) {
 
     var vm = this;
     vm.jobs = Jobs.$array;
@@ -25,12 +25,15 @@
         controller: 'CreateDialogController',
         controllerAs: 'dialog',
         templateUrl: 'app/jobs/create.html',
-        parent: angular.element(document.body),
+        parent: angular.element($document.body),
         targetEvent: ev,
         clickOutsideToClose: true
       })
       .then( function (job) {
-        Jobs.$array.$add(job);
+        var meta = {
+          "created_on": moment().format(),
+        }
+        Jobs.$array.$add(_.merge(job, meta));
         $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));
       });
     }
