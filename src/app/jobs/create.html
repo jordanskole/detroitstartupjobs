@@ -1,0 +1,64 @@
+<md-dialog aria-label="Mango (Fruit)"  ng-cloak flex="50">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Add a Job Posting</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="dialog.cancel()">
+        <md-icon md-font-library="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+
+      <div layout>
+        <md-input-container flex>
+          <label>Title</label>
+          <input type="text" ng-model="dialog.job.title">
+        </md-input-container>
+      </div>
+
+      <div layout>
+        <md-input-container flex>
+          <label>Location</label>
+          <input type="text" ng-model="dialog.job.location">
+        </md-input-container>
+        <md-input-container flex>
+          <label>Company</label>
+          <input type="text" ng-model="job.company">
+        </md-input-container>
+      </div>
+
+      <div layout>
+        <div flex="10" layout layout-align="center center">
+          <span class="md-body-1">Salary:</span>
+        </div>
+        <md-slider flex min="30" max="120" ng-model="dialog.job.salary" aria-label="Salary" class="md-primary"></md-slider>
+        <div flex="10" layout layout-align="center center">
+          {{ '$' + dialog.job.salary + 'k' }}
+        </div>
+      </div>
+      <div layout>
+        <div flex="10" layout layout-align="center center">
+          <span class="md-body-1">Skills:</span>
+        </div>
+        <md-chips ng-model="dialog.job.skills" placeholder="+ Skill" secondary-placeholder="Add a Skill" flex>
+        </md-chips>
+      </div>
+
+      <md-input-container>
+        <label>Description</label>
+        <textarea ng-model="dialog.job.description"></textarea>
+      </md-input-container>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="dialog.cancel()" >
+     Cancel
+    </md-button>
+    <md-button ng-click="dialog.save()" style="margin-right:20px;" >
+      Save
+    </md-button>
+  </div>
+</md-dialog>

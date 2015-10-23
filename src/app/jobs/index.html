@@ -1,0 +1,59 @@
+<md-toolbar class="md-whiteframe-z3">
+  <div class="md-toolbar-tools">
+    <md-button ng-click="home.toggleNav()" class="md-icon-button" aria-label="Settings">
+      <md-icon md-font-library="material-icons">menu</md-icon>
+    </md-button>
+    <h2>
+      <a ui-sref="jobs.index">Detroit Startup Jobs</a>
+    </h2>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Search">
+      <md-icon md-font-library="material-icons">search</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Saved Jobs">
+      <md-icon md-font-library="material-icons">bookmark</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Notifications">
+      <md-icon md-font-library="material-icons">add_alert</md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Account">
+      <md-icon md-font-library="material-icons">account_circle</md-icon>
+    </md-button>
+    <md-button ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add Job">
+      <md-icon md-font-library="material-icons">add</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<section layout="row">
+  <div flex></div>
+
+  <md-content flex="80" layout="column">
+
+    <div ui-view>
+
+      <md-subheader>
+        New Job Postings:
+      </md-subheader>
+
+      <md-card>
+        <md-list class="md-no-style" layout-fill style="padding: 0px;">
+            <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()" layout-fill>
+              <md-icon md-font-library="material-icons" ng-class="md-avatar-icon">favorite</md-icon>
+              <div class="md-list-item-text">
+              <h3>{{ job.title }}</h3>
+              <p>{{ job.description }}</p>
+              <md-chips readonly="true" ng-model="job.skills" ng-class="md-primary">
+              </md-chips>
+            </div>
+            <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+      </md-card>
+
+    </div>
+
+  </md-content><!-- column -->
+
+  <div flex></div>
+</section>
