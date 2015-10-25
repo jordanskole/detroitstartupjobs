@@ -10,7 +10,7 @@
 
     var vm = this;
     vm.jobs = Jobs.$array;
-    $log.log(CurrentAuth);
+    vm.user = CurrentAuth;
 
     vm.goToSkill = function (chip) {
       $log.log('Clicked on Skill:');
