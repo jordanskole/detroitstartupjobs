@@ -31,7 +31,7 @@
       })
       .then( function (job) {
         var meta = {
-          "created_on": moment().format(),
+          "created_on": moment().format()
         }
         Jobs.$array.$add(_.merge(job, meta));
         $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));

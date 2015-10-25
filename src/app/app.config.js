@@ -19,9 +19,18 @@
 
     // set our material design theme
     $mdThemingProvider.theme('default')
-     .primaryPalette('cyan')
-     .accentPalette('teal')
-     .backgroundPalette('grey');
+      .primaryPalette('cyan')
+      .accentPalette('teal')
+      .backgroundPalette('grey');
+
+    // Configure a dark theme
+    $mdThemingProvider.theme('alt-background', 'default')
+      .backgroundPalette('cyan', {
+
+      });
+
+
+    // $mdThemingProvider.theme('default-inverse', 'default');
   }
 
 })();
