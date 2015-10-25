@@ -14,18 +14,31 @@
         template: '<ui-view flex layout="column" />'
       })
       .state('account.login', {
-        // what tab do we want to land on
-        // I normally hate url params, but I think is appropriate here
-        url: '/login?action',
+        url: '/login?action&redirect',
         templateUrl: 'app/account/login.html',
         controller: 'LoginController',
         controllerAs: 'account'
+      })
+      .state('account.logout', {
+        url: '/logout?redirect',
+        controller: function (Auth, $state, $stateParams) {
+          Auth.$unauth();
+          $state.go($stateParams.redirect || 'jobs');
+        }
       })
       .state('jobs', {
         url: '/jobs',
         templateUrl: 'app/jobs/index.html',
         controller: 'JobsController',
-        controllerAs: 'home'
+        controllerAs: 'home',
+        resolve: {
+          // controller will not be loaded until $waitForAuth resolves
+          // Auth refers to our $firebaseAuth wrapper in the example above
+          "CurrentAuth": ["Auth", function(Auth) {
+            // $waitForAuth returns a promise so the resolve waits for it to complete
+            return Auth.$waitForAuth();
+          }]
+        }
       });
 
     $urlRouterProvider.otherwise('/jobs');

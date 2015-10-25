@@ -31,6 +31,18 @@
       }
     });
 
+    vm.loginWithPassword = function () {
+      vm.loading = true;
+      Auth.$authWithPassword(vm.user)
+      .then(function (authData) {
+        vm.loading = false;
+        $state.go('jobs');
+      })
+      .catch( function (error) {
+        $log.error('Error: ' + error);
+      });
+    }
+
     vm.createUser = function () {
       vm.loading = true;
       Auth.$createUser({
