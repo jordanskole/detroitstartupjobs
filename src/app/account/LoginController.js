@@ -3,13 +3,13 @@
 
   angular
     .module('detroitstartupjobs')
-    .controller('AccountController', AccountController);
+    .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function AccountController ($scope, $log, $window, $state, $stateParams) {
+  function LoginController ($scope, $log, $window, $state, $stateParams, Auth) {
 
     var vm = this;
-    vm.windowHeight = $window.innerHeight;
+    vm.loading = false;
 
     if ($stateParams.action === 'login') {
       vm.tabIndex = 0;
@@ -30,6 +30,32 @@
         $state.transitionTo('account.login', {action: 'social'}, {inherit: false, notify: false, reload: false});
       }
     });
+
+    vm.createUser = function () {
+      vm.loading = true;
+      Auth.$createUser({
+        email: vm.newUser.email,
+        password: vm.newUser.password
+      })
+      .then( function (userData) {
+        // we have a user
+        $log.log('Created user with uid: ' + userData.uid);
+        // log them in
+        return Auth.$authWithPassword({
+          email: vm.newUser.email,
+          password: vm.newUser.password
+        });
+
+      })
+      .then( function (authData) {
+        $log.log('Logged in with uid: ' + authData.uid );
+        vm.loading = false;
+        $state.go('jobs');
+      })
+      .catch( function (error) {
+        $log.error('Error: ' + error);
+      });
+    }
 
 
   }

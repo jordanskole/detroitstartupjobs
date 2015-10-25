@@ -18,7 +18,7 @@
         // I normally hate url params, but I think is appropriate here
         url: '/login?action',
         templateUrl: 'app/account/login.html',
-        controller: 'AccountController',
+        controller: 'LoginController',
         controllerAs: 'account'
       })
       .state('jobs', {
