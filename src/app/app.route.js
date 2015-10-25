@@ -11,10 +11,12 @@
       .state('account', {
         url: '/account',
         abstract: true,
-        template: '<ui-view />'
+        template: '<ui-view flex layout="column" />'
       })
       .state('account.login', {
-        url: '/login?action', // what tab do we want to land on
+        // what tab do we want to land on
+        // I normally hate url params, but I think is appropriate here
+        url: '/login?action',
         templateUrl: 'app/account/login.html',
         controller: 'AccountController',
         controllerAs: 'account'

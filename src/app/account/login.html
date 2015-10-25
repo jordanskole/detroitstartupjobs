@@ -1,4 +1,4 @@
-<md-content layout="row" layout-align="center center" ng-cloak style="min-height: {{ account.windowHeight }}px; background: grey;">
+<md-content flex layout-fill layout="row" layout-align="center center" ng-cloak>
   <md-card flex="33" flex-sm="90" flex-md="66" layout="column" layout-align="center" layout-padding>
     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always" md-selected="account.tabIndex">
 
@@ -102,6 +102,10 @@
       </md-tab>
 
     </md-tabs>
-    <div style="min-height: 60px;"></div>
+    <div style="min-height: 60px; text-align: center;" >
+      <p flex>
+        Return to <a ui-sref="jobs">Jobs Listings</a>
+      </p>
+    </div>
   </md-card>
 </md-content>

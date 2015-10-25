@@ -22,9 +22,10 @@
      <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open Account menu">
        <md-icon md-menu-origin>account_circle</md-icon>
      </md-button>
+
      <md-menu-content width="4">
        <md-menu-item>
-         <md-button ui-sref="login" class="md-primary">
+         <md-button ui-sref="account.login({action: 'login'})" class="md-primary" aria-label="Login to Account">
             <div layout="row">
               <p flex>Login</p>
               <md-icon md-menu-align-target style="margin: auto 3px auto 0;">lock_open</md-icon>
@@ -32,14 +33,15 @@
          </md-button>
        </md-menu-item>
        <md-menu-item>
-         <md-button ui-sref="register" class="md-primary">
+         <md-button ui-sref="account.login({action: 'register'})" class="md-primary" aria-label="Register an Account">
            <div layout="row">
              <p flex>Register</p>
-             <md-icon md-menu-align-target style="margin: auto 3px auto 0;">person_add</md-icon>
+             <md-icon style="margin: auto 3px auto 0;">person_add</md-icon>
            </div>
          </md-button>
        </md-menu-item>
      </md-menu-content>
+
     </md-menu>
 
     <md-button ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add Job">
