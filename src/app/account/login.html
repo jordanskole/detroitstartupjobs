@@ -1,0 +1,88 @@
+<md-content layout="row" layout-align="center" ng-cloak style="margin-top: 30px;">
+  <md-card flex="33" layout="column" layout-align="center" layout-padding>
+    <md-tabs md-dynamic-height md-border-bottom>
+
+      <md-tab label="Login">
+        <div layout="row" layout-align="center" layout-padding style="text-align: center;">
+          <md-button class="md-fab md-primary">
+            <md-icon>lock_open</md-icon>
+          </md-button>
+        </div>
+        <div layout="row" layout-align="center" layout-padding style="text-align: center;">
+          <h1 class="md-headline">Login</h1>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-input-container flex="80">
+            <label>Email</label>
+            <input type="email" ng-model="user.email">
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-input-container flex="80">
+            <label>Password</label>
+            <input type="password" ng-model="user.password">
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-button flex="80" class="md-primary md-raised">Login</md-button>
+        </div>
+      </md-tab>
+
+      <md-tab label="Register">
+        <div layout="row" layout-align="center" layout-padding style="text-align: center;">
+          <md-button class="md-fab md-primary">
+            <md-icon>person_add</md-icon>
+          </md-button>
+        </div>
+        <div layout="row" layout-align="center" layout-padding style="text-align: center;">
+          <h1 class="md-headline">Register</h1>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-input-container flex="80">
+            <label>Email</label>
+            <input type="email" ng-model="user.email">
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-input-container flex="80" style="padding-bottom: 0px;">
+            <label>Password</label>
+            <input type="password" ng-model="user.password">
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-input-container flex="80">
+            <label>Confirm Password</label>
+            <input type="password" ng-model="user.passwordConfirm">
+          </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-button flex="80" class="md-primary md-raised">Submit</md-button>
+        </div>
+      </md-tab>
+
+      <md-tab label="Social Login">
+        <div layout="row" layout-align="center" layout-padding style="text-align: center;">
+          <md-button class="md-fab md-primary">
+            <md-icon>security</md-icon>
+          </md-button>
+        </div>
+        <div layout="row" layout-align="center" layout-padding style="text-align: center;">
+          <h1 class="md-headline">Login With OAuth</h1>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-button flex="80" class="md-primary md-raised">
+            <md-icon>phonelink_lock</md-icon>
+            Google
+          </md-button>
+        </div>
+        <div layout="row" layout-align="center">
+          <md-button flex="80" class="md-primary md-raised">
+            <md-icon>phonelink_lock</md-icon>
+            Facebook
+          </md-button>
+        </div>
+      </md-tab>
+
+    </md-tabs>
+  </md-card>
+</md-content>

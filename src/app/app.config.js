@@ -22,6 +22,11 @@
      .primaryPalette('cyan')
      .accentPalette('teal')
      .backgroundPalette('grey');
+
+    // Configure a dark theme with primary foreground yellow
+    $mdThemingProvider.theme('docs-dark', 'default')
+     .primaryPalette('cyan')
+     .dark();
   }
 
 })();

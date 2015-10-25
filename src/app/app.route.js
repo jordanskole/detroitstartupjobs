@@ -8,6 +8,12 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/account/login.html',
+        controller: 'AccountController',
+        controllerAs: 'account'
+      })
       .state('jobs', {
         url: '/jobs',
         templateUrl: 'app/jobs/index.html',
