@@ -1,6 +1,6 @@
-<md-content layout="row" layout-align="center center" ng-cloak style="height: {{ account.windowHeight }}px; background: grey;">
+<md-content layout="row" layout-align="center center" ng-cloak style="min-height: {{ account.windowHeight }}px; background: grey;">
   <md-card flex="33" flex-sm="90" flex-md="66" layout="column" layout-align="center" layout-padding>
-    <md-tabs md-dynamic-height md-border-bottom>
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always" md-selected="account.tabIndex">
 
       <md-tab label="Login">
         <div layout="row" layout-align="center" layout-padding style="text-align: center;">
@@ -40,9 +40,9 @@
         <form name="registerForm">
 
           <div layout="row" layout-align="center">
-            <md-input-container flex="80">
+            <md-input-container flex="80" placeholder="jordan@theironyard.com">
               <label>Email</label>
-              <input type="email" ng-model="user.email" name="email" placeholder="jordan@theironyard.com" required>
+              <input type="email" ng-model="user.email" name="email" required>
               <div ng-messages="registerForm.email.$error" ng-show="registerForm.email.$dirty">
                 <div ng-message="required">Email is a required field</div>
                 <div ng-message="email">This isn't a valid email address</div>
@@ -78,7 +78,7 @@
         </form>
       </md-tab>
 
-      <md-tab label="Social Login">
+      <md-tab label="Social">
         <div layout="row" layout-align="center" layout-padding style="text-align: center;">
           <md-button class="md-fab md-primary">
             <md-icon>security</md-icon>

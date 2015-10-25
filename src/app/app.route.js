@@ -8,8 +8,13 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('login', {
-        url: '/login',
+      .state('account', {
+        url: '/account',
+        abstract: true,
+        template: '<ui-view />'
+      })
+      .state('account.login', {
+        url: '/login?action', // what tab do we want to land on
         templateUrl: 'app/account/login.html',
         controller: 'AccountController',
         controllerAs: 'account'
