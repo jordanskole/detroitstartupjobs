@@ -22,11 +22,11 @@
     }
 
     $scope.$watch('account.tabIndex', function (current, old) {
-      if (current == 0) {
+      if (current == 0 && old != 0) {
         $state.transitionTo('account.login', {action: 'login'}, {inherit: false, notify: false, reload: false});
-      } else if (current == 1) {
+      } else if (current == 1 && old != 1) {
         $state.transitionTo('account.login', {action: 'register'}, {inherit: false, notify: false, reload: false});
-      } else if (current == 2) {
+      } else if (current == 2 && old != 2) {
         $state.transitionTo('account.login', {action: 'social'}, {inherit: false, notify: false, reload: false});
       }
     });
@@ -34,7 +34,7 @@
     vm.loginWithPassword = function () {
       vm.loading = true;
       Auth.$authWithPassword(vm.user)
-      .then(function (authData) {
+      .then(function () {
         vm.loading = false;
         $state.go('jobs');
       })

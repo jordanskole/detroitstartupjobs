@@ -24,7 +24,8 @@
         controller: function (Auth, $state, $stateParams) {
           Auth.$unauth();
           $state.go($stateParams.redirect || 'jobs');
-        }
+        },
+        controllerAs: 'logout'
       })
       .state('jobs', {
         url: '/jobs',

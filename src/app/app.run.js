@@ -6,12 +6,14 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $rootScope) {
+  function runBlock($log, $rootScope, $state) {
 
+    var vm = new Object;
     $log.debug('runBlock end');
 
     //
-    $rootScope.$on("$stateChangeError", function($log, event, toState, toParams, fromState, fromParams, error) {
+    vm.on = $rootScope.$on();
+    vm.on("$stateChangeError", function($log, event, toState, toParams, fromState, fromParams, error) {
       // throw the error
       $log.error(error);
 
