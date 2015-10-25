@@ -25,9 +25,7 @@
 
     // Configure a dark theme
     $mdThemingProvider.theme('alt-background', 'default')
-      .backgroundPalette('cyan', {
-
-      });
+      .backgroundPalette('blue-grey');
 
 
     // $mdThemingProvider.theme('default-inverse', 'default');
