@@ -6,9 +6,10 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController ($log) {
+  function AccountController ($log, $window) {
 
     var vm = this;
+    vm.windowHeight = $window.innerHeight;
 
   }
 
