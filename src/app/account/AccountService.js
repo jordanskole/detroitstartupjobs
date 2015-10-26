@@ -6,11 +6,11 @@
     .factory('Account', Account);
 
   /** @ngInject */
-  function Account ($firebaseAuth, FIREBASE_URL) {
+  function Account (FIREBASE_URL, $firebaseAuth, $firebaseArray, $firebaseObject) {
     var itemsRef = new Firebase(FIREBASE_URL + "/accounts");
 
     var Accounts = $firebaseArray.$extend({
-      
+
     });
 
     return {
