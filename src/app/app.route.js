@@ -19,6 +19,12 @@
         controller: 'LoginController',
         controllerAs: 'account'
       })
+      .state('account.create', {
+        url: '/create',
+        templateUrl: 'app/account/create.html',
+        controller: 'AccountController',
+        controllerAs: 'account'
+      })
       .state('account.logout', {
         url: '/logout?redirect',
         controller: function (Auth, $state, $stateParams) {
