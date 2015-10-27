@@ -3,10 +3,10 @@
 
   angular
     .module('detroitstartupjobs')
-    .factory('Account', Account);
+    .factory('Accounts', Accounts);
 
   /** @ngInject */
-  function Account (FIREBASE_URL, $firebaseAuth, $firebaseArray, $firebaseObject) {
+  function Accounts (FIREBASE_URL, $firebaseAuth, $firebaseArray, $firebaseObject) {
     var itemsRef = new Firebase(FIREBASE_URL + "/accounts");
 
     var Accounts = $firebaseArray.$extend({
@@ -15,7 +15,9 @@
 
     return {
       "$array": Accounts(itemsRef),
-      "$object": $firebaseObject(itemsRef)
+      "$object": function (objectId) {
+        return $firebaseObject(itemsRef.child(objectId));
+      }
     };
   }
 

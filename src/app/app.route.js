@@ -20,7 +20,7 @@
         controllerAs: 'account'
       })
       .state('account.create', {
-        url: '/create',
+        url: '/create?uid',
         templateUrl: 'app/account/create.html',
         controller: 'AccountController',
         controllerAs: 'account'
