@@ -91,13 +91,13 @@
             <md-checkbox class="md-primary" ng-model="account.employer"></md-checkbox>
           </md-list-item>
         </md-card>
-        <p ng-show="account.profile.employer && !account.approved" class="md-body-1">
+        <p ng-show="profile.employer && !profile.approved" class="md-body-1">
           Awesome! We will verify your account information. If everything checks out, you should be able to post jobs soon!
         </p>
         <p class="md-headline">
-          Your profile is {{ account.profile.complete }}% complete
+          Your profile is {{ profile.complete }}% complete
         </p>
-        <md-progress-linear md-mode="determinate" value="{{ account.profile.complete }}"></md-progress-linear>
+        <md-progress-linear md-mode="determinate" value="{{ profile.complete }}"></md-progress-linear>
       </div>
 
       <span flex="5"></span>
@@ -112,22 +112,22 @@
         <div layout layout-sm="column" layout-align="center">
           <md-input-container flex="95">
             <label>Email Address</label>
-            <input type="email" ng-model="account.profile.email">
+            <input type="email" ng-model="profile.email">
           </md-input-container>
         </div>
         <div layout layout-sm="column" layout-align="center">
           <md-input-container flex="45">
             <label>First name</label>
-            <input ng-model="account.profile.firstName">
+            <input ng-model="profile.first_name">
           </md-input-container>
           <span flex="5"></span>
           <md-input-container flex="45">
             <label>Last Name</label>
-            <input ng-model="account.profile.lastName">
+            <input ng-model="profile.last_name">
           </md-input-container>
         </div>
         <div layout layout-sm="column" layout-padding>
-          <md-datepicker ng-model="account.profile.birthday" md-placeholder="Birthday"></md-datepicker>
+          <md-datepicker ng-model="account.birthday" md-placeholder="Birthday" ng-change="account.birthdateChange()"></md-datepicker>
         </div>
 
 
@@ -141,13 +141,13 @@
         <div layout layout-sm="column" layout-align="center">
           <md-input-container flex="95">
             <label>Mobile Phone</label>
-            <input type="text" ng-model="account.profile.mobile">
+            <input type="text" ng-model="profile.mobile">
           </md-input-container>
         </div>
         <div layout layout-sm="column" layout-align="center">
           <md-input-container flex="95">
             <label>Home Phone</label>
-            <input type="text" ng-model="account.profile.phone">
+            <input type="text" ng-model="profile.phone">
           </md-input-container>
         </div>
 
@@ -162,23 +162,23 @@
           <div layout layout-sm="column" layout-align="center">
             <md-input-container flex="95">
               <label>Street</label>
-              <input ng-model="account.profile.street">
+              <input ng-model="profile.street">
             </md-input-container>
           </div>
           <div layout layout-sm="column" layout-align="center">
             <md-input-container flex="95">
               <label>Street 2</label>
-              <input ng-model="account.profile.street2">
+              <input ng-model="profile.street2">
             </md-input-container>
           </div>
           <div layout layout-sm="column" layout-align="center">
             <md-input-container flex="40">
               <label>City</label>
-              <input ng-model="account.profile.city">
+              <input ng-model="profile.city">
             </md-input-container>
             <md-input-container flex="30">
               <label>State</label>
-              <md-select ng-model="account.profile.state">
+              <md-select ng-model="profile.state">
                 <md-option ng-repeat="state in account.states" value="{{state.abbrev}}">
                   {{state.abbrev}}
                 </md-option>
@@ -186,7 +186,7 @@
             </md-input-container>
             <md-input-container flex="25">
               <label>Postal Code</label>
-              <input name="postalCode" ng-model="account.profile.postalCode" placeholder="12345"
+              <input name="postalCode" ng-model="profile.postal_code" placeholder="12345"
                      required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
               <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
                 <div ng-message="required" class="my-message">You must supply a postal code.</div>
@@ -211,32 +211,32 @@
             Company Information
           </md-subheader>
           <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
-          <div ng-show="account.profile.employer" layout layout-sm="column" layout-align="center">
+          <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
             <md-input-container flex="95">
               <label>Company Name</label>
-              <input ng-model="account.profile.company.name">
+              <input ng-model="profile.company.name">
             </md-input-container>
           </div>
           <div ng-show="account.employer" layout layout-sm="column" layout-align="center">
             <md-input-container flex="95">
               <label>Company Website</label>
-              <input ng-model="account.profile.company.street">
+              <input ng-model="profile.company.street">
             </md-input-container>
           </div>
           <div ng-show="account.employer" layout layout-sm="column" layout-align="center">
             <md-input-container flex="95">
               <label>Street</label>
-              <input ng-model="account.profile.company.street2">
+              <input ng-model="profile.company.street2">
             </md-input-container>
           </div>
           <div layout layout-sm="column" layout-align="center">
             <md-input-container flex="40">
               <label>City</label>
-              <input ng-model="account.profile.company.city">
+              <input ng-model="profile.company.city">
             </md-input-container>
             <md-input-container flex="30">
               <label>State</label>
-              <md-select ng-model="account.profile.state">
+              <md-select ng-model="profile.state">
                 <md-option ng-repeat="state in account.states" value="{{state.abbrev}}">
                   {{state.abbrev}}
                 </md-option>
@@ -244,7 +244,7 @@
             </md-input-container>
             <md-input-container flex="25">
               <label>Postal Code</label>
-              <input name="postalCode" ng-model="account.profile.company.postalCode" placeholder="12345"
+              <input name="postalCode" ng-model="profile.company.postalCode" placeholder="12345"
                      required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
               <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
                 <div ng-message="required" class="my-message">You must supply a postal code.</div>

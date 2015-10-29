@@ -54,10 +54,10 @@
         $log.log('Created user with uid: ' + userData.uid);
         $log.log(userData);
         // create the users account
-        return Accounts.$array.$add({
-          uid: userData.uid,
-          email: vm.newUser.email
-        })
+        return Accounts.$new(userData.uid, {
+          email: vm.newUser.email,
+          complete: 0
+        });
       })
       .then( function (ref) {
         $log.log(ref);
