@@ -6,7 +6,11 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, $mdThemingProvider) {
+  function config($locationProvider, $logProvider, toastrConfig, $mdThemingProvider) {
+
+    // remove the # from urls
+    $locationProvider.html5Mode(true);
+
     // Enable log
     $logProvider.debugEnabled(true);
 
