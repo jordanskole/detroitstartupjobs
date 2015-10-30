@@ -8,36 +8,26 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('account', {
-        url: '/account',
-        abstract: true,
-        template: '<ui-view flex layout="column" />'
-      })
-      .state('account.login', {
+      .state('login', {
         url: '/login?action&redirect',
         templateUrl: 'app/account/login.html',
         controller: 'LoginController',
         controllerAs: 'account'
       })
-      .state('account.update', {
-        url: '/:uid',
-        templateUrl: 'app/account/update.html',
-        controller: 'AccountController',
-        controllerAs: 'account'
-      })
-      .state('account.logout', {
+      .state('logout', {
         url: '/logout?redirect',
         controller: function (Auth, $state, $stateParams) {
           Auth.$unauth();
-          $state.go($stateParams.redirect || 'jobs');
+          $state.go($stateParams.redirect || 'home.jobs');
         },
         controllerAs: 'logout'
       })
-      .state('jobs', {
-        url: '/jobs',
-        templateUrl: 'app/jobs/index.html',
-        controller: 'JobsController',
+      .state('home', {
+        url: '/+',
+        templateUrl: 'app/home/index.html',
+        controller: 'HomeController',
         controllerAs: 'home',
+        abstract: true,
         resolve: {
           // controller will not be loaded until $waitForAuth resolves
           // Auth refers to our $firebaseAuth wrapper in the example above
@@ -46,9 +36,26 @@
             return Auth.$waitForAuth();
           }]
         }
+      })
+      .state('home.account', {
+        url: '/account',
+        abstract: true,
+        template: '<ui-view flex layout="column" />'
+      })
+      .state('home.account.update', {
+        url: '/:uid',
+        templateUrl: 'app/account/update.html',
+        controller: 'AccountController',
+        controllerAs: 'account'
+      })
+      .state('home.jobs', {
+        url: '/jobs',
+        templateUrl: 'app/jobs/index.html',
+        controller: 'JobsController',
+        controllerAs: 'jobs'
       });
 
-    $urlRouterProvider.otherwise('/jobs');
+    $urlRouterProvider.otherwise('/+/jobs');
   }
 
 })();
