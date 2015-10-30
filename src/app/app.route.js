@@ -19,6 +19,12 @@
         controller: 'LoginController',
         controllerAs: 'account'
       })
+      .state('account.update', {
+        url: '/:uid',
+        templateUrl: 'app/account/update.html',
+        controller: 'AccountController',
+        controllerAs: 'account'
+      })
       .state('account.logout', {
         url: '/logout?redirect',
         controller: function (Auth, $state, $stateParams) {

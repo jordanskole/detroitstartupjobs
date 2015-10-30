@@ -19,13 +19,17 @@
 
     // set our material design theme
     $mdThemingProvider.theme('default')
-      .primaryPalette('cyan')
-      .accentPalette('teal')
+      .primaryPalette('teal')
+      .accentPalette('cyan')
       .backgroundPalette('grey');
 
     // Configure a dark theme
     $mdThemingProvider.theme('alt-background', 'default')
       .backgroundPalette('blue-grey');
+
+    // Grey Text theme
+    $mdThemingProvider.theme('grey')
+      .primaryPalette('grey');
 
 
     // $mdThemingProvider.theme('default-inverse', 'default');

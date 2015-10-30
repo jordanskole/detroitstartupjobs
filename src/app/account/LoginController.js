@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController ($scope, $log, $window, $state, $stateParams, Auth) {
+  function LoginController ($scope, $log, $window, $state, $stateParams, $mdDialog, Auth, Accounts) {
 
     var vm = this;
     vm.loading = false;
@@ -52,20 +52,40 @@
       .then( function (userData) {
         // we have a user
         $log.log('Created user with uid: ' + userData.uid);
-        // log them in
+        $log.log(userData);
+        // create the users account
+        return Accounts.$new(userData.uid, {
+          email: vm.newUser.email,
+          complete: 0
+        });
+      })
+      .then( function (ref) {
+        $log.log(ref);
         return Auth.$authWithPassword({
           email: vm.newUser.email,
           password: vm.newUser.password
         });
-
       })
       .then( function (authData) {
         $log.log('Logged in with uid: ' + authData.uid );
         vm.loading = false;
-        $state.go('jobs');
+        $state.go('account.update', {uid: authData.uid });
       })
       .catch( function (error) {
         $log.error('Error: ' + error);
+        $log.log(error);
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title('Oh no!')
+            .content(error.message || 'Something went wrong. I have alerted the team. Please try again.')
+            .ariaLabel('Error Dialog')
+            .ok('Got it!')
+        )
+        .then( function () {
+          // $state.go('jobs');
+          vm.loading = false;
+        });
       });
     }
 
