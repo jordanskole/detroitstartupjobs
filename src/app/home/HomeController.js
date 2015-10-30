@@ -9,7 +9,12 @@
   function HomeController ($log, $state, $mdDialog, $document, $mdToast, CurrentAuth, Accounts) {
 
     var vm = this;
-    vm.account = Accounts.$object(CurrentAuth.uid);
+    if (CurrentAuth) {
+      vm.account = Accounts.$object(CurrentAuth.uid);
+    } else {
+      vm.account = false;
+    }
+
     $log.log(vm.user);
 
     vm.go = function (state, params) {

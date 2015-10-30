@@ -9,7 +9,7 @@
   function JobsController ($log, $state, $mdDialog, $document, $mdToast, Jobs, CurrentAuth, Accounts) {
 
     var vm = this;
-    vm.jobs = Jobs.$array;
+    vm.list = Jobs.$array;
     vm.account = Accounts.$object(CurrentAuth.uid);
     $log.log(vm.user);
 

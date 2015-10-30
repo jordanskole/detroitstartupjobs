@@ -4,7 +4,7 @@
 
 <md-card>
   <md-list class="md-no-style" layout-fill style="padding: 0px;">
-      <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()">
+      <md-list-item ng-repeat="job in jobs.list" class="md-3-line" ng-click="goToJob()">
         <div class="md-list-item-text">
         <h3>{{ job.title }}</h3>
         <p>

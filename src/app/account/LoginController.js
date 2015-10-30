@@ -36,7 +36,7 @@
       Auth.$authWithPassword(vm.user)
       .then(function () {
         vm.loading = false;
-        $state.go('jobs');
+        $state.go('home.jobs');
       })
       .catch( function (error) {
         $log.error('Error: ' + error);

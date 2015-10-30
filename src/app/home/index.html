@@ -23,7 +23,7 @@
       </md-button>
       <md-menu-content width="4">
         <md-menu-item ng-show="!home.account">
-          <md-button ng-click="home.go('account.login', {action: 'login'})" class="md-primary">
+          <md-button ng-click="home.go('login', {action: 'login'})" class="md-primary">
               <div layout="row">
                 <p flex>Login</p>
                 <md-icon md-menu-align-target style="margin: auto 3px auto 0;">lock_open</md-icon>
@@ -31,7 +31,7 @@
           </md-button>
         </md-menu-item>
         <md-menu-item ng-show="!home.account">
-          <md-button ng-click="home.go('account.login', {action: 'register'})" class="md-primary">
+          <md-button ng-click="home.go('login', {action: 'register'})" class="md-primary">
               <div layout="row">
                 <p flex>Register</p>
                 <md-icon md-menu-align-target style="margin: auto 3px auto 0;">person_add</md-icon>
@@ -39,7 +39,7 @@
           </md-button>
         </md-menu-item>
         <md-menu-item ng-show="home.account">
-          <md-button ng-click="home.go('account.update', {uid: home.account.$id })" class="md-primary">
+          <md-button ng-click="home.go('home.account.update', {uid: home.account.$id })" class="md-primary">
               <div layout="row">
                 <p flex>My Profile</p>
                 <md-icon md-menu-align-target style="margin: auto 3px auto 0;">mode_edit</md-icon>
@@ -47,7 +47,7 @@
           </md-button>
         </md-menu-item>
         <md-menu-item ng-show="home.account">
-          <md-button ng-click="home.go('account.logout')" class="md-primary">
+          <md-button ng-click="home.go('home.account.logout')" class="md-primary">
               <div layout="row">
                 <p flex>Logout</p>
                 <md-icon md-menu-align-target style="margin: auto 3px auto 0;">exit_to_app</md-icon>

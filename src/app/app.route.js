@@ -44,7 +44,7 @@
         url: '/logout?redirect',
         controller: function (Auth, $state, $stateParams) {
           Auth.$unauth();
-          $state.go($stateParams.redirect || 'jobs');
+          $state.go($stateParams.redirect || 'home.jobs');
         },
         controllerAs: 'logout'
       })
