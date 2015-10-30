@@ -19,9 +19,9 @@
         controller: 'LoginController',
         controllerAs: 'account'
       })
-      .state('account.create', {
-        url: '/create?uid',
-        templateUrl: 'app/account/create.html',
+      .state('account.update', {
+        url: '/:uid',
+        templateUrl: 'app/account/update.html',
         controller: 'AccountController',
         controllerAs: 'account'
       })

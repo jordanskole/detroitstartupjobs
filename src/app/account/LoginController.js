@@ -69,7 +69,7 @@
       .then( function (authData) {
         $log.log('Logged in with uid: ' + authData.uid );
         vm.loading = false;
-        $state.go('account.create', {uid: authData.uid });
+        $state.go('account.update', {uid: authData.uid });
       })
       .catch( function (error) {
         $log.error('Error: ' + error);
