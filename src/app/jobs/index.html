@@ -84,13 +84,14 @@
 
       <md-card>
         <md-list class="md-no-style" layout-fill style="padding: 0px;">
-            <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()" layout-fill>
-              <md-icon ng-class="md-avatar-icon">favorite</md-icon>
+            <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()">
               <div class="md-list-item-text">
               <h3>{{ job.title }}</h3>
+              <p>
+                <span ng-repeat="skill in job.skills" class="md-hue-1">{{ skill }}{{$last ? '' : ', '}}</span>
+              </p>
               <p>{{ job.description }}</p>
-              <md-chips readonly="true" ng-model="job.skills" ng-class="md-primary">
-              </md-chips>
+              <md-icon class="md-secondary" ng-click="job.favorite = !job.favorite" ng-class="{'md-warn': job.favorite}">{{ job.favorite ? 'favorite' : 'favorite_border' }}</md-icon>
             </div>
             <md-divider></md-divider>
             </md-list-item>
