@@ -17,31 +17,44 @@
       <md-icon>notifications</md-icon>
     </md-button>
 
-    <md-menu md-position-mode="target-right target">
-     <!-- Trigger element is a md-button with an icon -->
-     <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open Account menu">
-       <md-icon md-menu-origin>account_circle</md-icon>
-     </md-button>
-
-     <md-menu-content width="4">
-       <md-menu-item>
-         <md-button ui-sref="account.login({action: 'login'})" class="md-primary" aria-label="Login to Account">
-            <div layout="row">
-              <p flex>Login</p>
-              <md-icon md-menu-align-target style="margin: auto 3px auto 0;">lock_open</md-icon>
-            </div>
-         </md-button>
-       </md-menu-item>
-       <md-menu-item>
-         <md-button ui-sref="account.login({action: 'register'})" class="md-primary" aria-label="Register an Account">
-           <div layout="row">
-             <p flex>Register</p>
-             <md-icon style="margin: auto 3px auto 0;">person_add</md-icon>
-           </div>
-         </md-button>
-       </md-menu-item>
-     </md-menu-content>
-
+    <md-menu md-position-mode="target-right target" >
+      <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+        <md-icon md-menu-origin>account_circle</md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item ng-show="!home.user">
+          <md-button ng-click="home.go('account.login', {action: 'login'})" class="md-primary">
+              <div layout="row">
+                <p flex>Login</p>
+                <md-icon md-menu-align-target style="margin: auto 3px auto 0;">lock_open</md-icon>
+              </div>
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-show="!home.user">
+          <md-button ng-click="home.go('account.login', {action: 'register'})" class="md-primary">
+              <div layout="row">
+                <p flex>Register</p>
+                <md-icon md-menu-align-target style="margin: auto 3px auto 0;">person_add</md-icon>
+              </div>
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-show="home.user">
+          <md-button ng-click="home.go('account.update', {uid: home.user.uid })" class="md-primary">
+              <div layout="row">
+                <p flex>My Profile</p>
+                <md-icon md-menu-align-target style="margin: auto 3px auto 0;">mode_edit</md-icon>
+              </div>
+          </md-button>
+        </md-menu-item>
+        <md-menu-item ng-show="home.user">
+          <md-button ng-click="home.go('account.logout')" class="md-primary">
+              <div layout="row">
+                <p flex>Logout</p>
+                <md-icon md-menu-align-target style="margin: auto 3px auto 0;">exit_to_app</md-icon>
+              </div>
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
     </md-menu>
 
     <md-button ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add Job">
@@ -84,13 +97,14 @@
 
       <md-card>
         <md-list class="md-no-style" layout-fill style="padding: 0px;">
-            <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()" layout-fill>
-              <md-icon ng-class="md-avatar-icon">favorite</md-icon>
+            <md-list-item ng-repeat="job in home.jobs" class="md-3-line" ng-click="goToJob()">
               <div class="md-list-item-text">
               <h3>{{ job.title }}</h3>
+              <p>
+                <span ng-repeat="skill in job.skills" class="md-hue-1">{{ skill }}{{$last ? '' : ', '}}</span>
+              </p>
               <p>{{ job.description }}</p>
-              <md-chips readonly="true" ng-model="job.skills" ng-class="md-primary">
-              </md-chips>
+              <md-icon class="md-secondary" ng-click="job.favorite = !job.favorite" ng-class="{'md-warn': job.favorite}">{{ job.favorite ? 'favorite' : 'favorite_border' }}</md-icon>
             </div>
             <md-divider></md-divider>
             </md-list-item>
