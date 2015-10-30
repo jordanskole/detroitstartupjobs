@@ -21,7 +21,7 @@
         <p ng-show="profile.employer && !profile.verified" class="md-body-1">
           Awesome! We will verify your account information. If everything checks out, you should be able to post jobs soon!
         </p>
-        <md-list>
+        <md-list ng-show="profile.employer && profile.verified">
           <md-list-item class="md-2-line">
             <md-icon class="md-avatar-icon md-primary">verified_user</md-icon>
             <div class="md-list-item-text" class="">
@@ -208,7 +208,7 @@
     </div><!-- row -->
 
     <div layout="row" layout-align="end" layout-padding md-theme="grey">
-      <md-button layout class="md-primary" ui-sref="jobs">
+      <md-button layout class="md-primary" ui-sref="home.jobs">
         Back to Jobs Listings
         <md-icon>arrow_forward</md-icon>
       </md-button>

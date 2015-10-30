@@ -14,6 +14,14 @@
         controller: 'LoginController',
         controllerAs: 'account'
       })
+      .state('logout', {
+        url: '/logout?redirect',
+        controller: function (Auth, $state, $stateParams) {
+          Auth.$unauth();
+          $state.go($stateParams.redirect || 'home.jobs');
+        },
+        controllerAs: 'logout'
+      })
       .state('home', {
         url: '/+',
         templateUrl: 'app/home/index.html',
@@ -39,14 +47,6 @@
         templateUrl: 'app/account/update.html',
         controller: 'AccountController',
         controllerAs: 'account'
-      })
-      .state('home.account.logout', {
-        url: '/logout?redirect',
-        controller: function (Auth, $state, $stateParams) {
-          Auth.$unauth();
-          $state.go($stateParams.redirect || 'home.jobs');
-        },
-        controllerAs: 'logout'
       })
       .state('home.jobs', {
         url: '/jobs',
