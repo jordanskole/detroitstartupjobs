@@ -6,11 +6,12 @@
     .controller('JobsController', JobsController);
 
   /** @ngInject */
-  function JobsController ($log, $mdDialog, $document, $mdToast, Jobs, CurrentAuth) {
+  function JobsController ($log, $state, $mdDialog, $document, $mdToast, Jobs, CurrentAuth) {
 
     var vm = this;
     vm.jobs = Jobs.$array;
     vm.user = CurrentAuth;
+    $log.log(vm.user);
 
     vm.goToSkill = function (chip) {
       $log.log('Clicked on Skill:');
@@ -19,6 +20,10 @@
 
     vm.goToJob = function () {
       $log.log('Clicked on Job:');
+    }
+
+    vm.go = function (state, params) {
+      $state.go(state, params);
     }
 
     vm.createJob = function (ev) {
