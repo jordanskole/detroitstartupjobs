@@ -88,12 +88,26 @@
         <md-card>
           <md-list-item md-no-ink>
             <p> Are you an employer? </p>
-            <md-checkbox class="md-primary" ng-model="account.employer"></md-checkbox>
+            <md-checkbox class="md-primary" ng-model="profile.employer"></md-checkbox>
           </md-list-item>
         </md-card>
-        <p ng-show="profile.employer && !profile.approved" class="md-body-1">
+        <p ng-show="profile.employer && !profile.verified" class="md-body-1">
           Awesome! We will verify your account information. If everything checks out, you should be able to post jobs soon!
         </p>
+        <md-list>
+          <md-list-item class="md-2-line">
+            <md-icon class="md-avatar-icon md-primary">verified_user</md-icon>
+            <div class="md-list-item-text" class="">
+              <h3>Awesome!</h3>
+              <p>Your profile has been verified. </p>
+            </div>
+          </md-list-item>
+          <md-list-item>
+            <md-button flex class="md-primary md-raised">
+              Add a Job Listing
+            </md-button>
+          </md-list-item>
+        </md-list>
         <p class="md-headline">
           Your profile is {{ profile.complete }}% complete
         </p>

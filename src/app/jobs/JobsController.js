@@ -6,11 +6,11 @@
     .controller('JobsController', JobsController);
 
   /** @ngInject */
-  function JobsController ($log, $state, $mdDialog, $document, $mdToast, Jobs, CurrentAuth) {
+  function JobsController ($log, $state, $mdDialog, $document, $mdToast, Jobs, CurrentAuth, Accounts) {
 
     var vm = this;
     vm.jobs = Jobs.$array;
-    vm.user = CurrentAuth;
+    vm.account = Accounts.$object(CurrentAuth.uid);
     $log.log(vm.user);
 
     vm.goToSkill = function (chip) {
