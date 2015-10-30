@@ -11,7 +11,7 @@
       <md-icon>search</md-icon>
     </md-button>
     <md-button class="md-icon-button" aria-label="Saved Jobs">
-      <md-icon>bookmark</md-icon>
+      <md-icon>favorite</md-icon>
     </md-button>
     <md-button class="md-icon-button" aria-label="Notifications">
       <md-icon>notifications</md-icon>
@@ -22,7 +22,7 @@
         <md-icon md-menu-origin>account_circle</md-icon>
       </md-button>
       <md-menu-content width="4">
-        <md-menu-item ng-show="!home.user">
+        <md-menu-item ng-show="!home.account">
           <md-button ng-click="home.go('account.login', {action: 'login'})" class="md-primary">
               <div layout="row">
                 <p flex>Login</p>
@@ -30,7 +30,7 @@
               </div>
           </md-button>
         </md-menu-item>
-        <md-menu-item ng-show="!home.user">
+        <md-menu-item ng-show="!home.account">
           <md-button ng-click="home.go('account.login', {action: 'register'})" class="md-primary">
               <div layout="row">
                 <p flex>Register</p>
@@ -38,15 +38,15 @@
               </div>
           </md-button>
         </md-menu-item>
-        <md-menu-item ng-show="home.user">
-          <md-button ng-click="home.go('account.update', {uid: home.user.uid })" class="md-primary">
+        <md-menu-item ng-show="home.account">
+          <md-button ng-click="home.go('account.update', {uid: home.account.$id })" class="md-primary">
               <div layout="row">
                 <p flex>My Profile</p>
                 <md-icon md-menu-align-target style="margin: auto 3px auto 0;">mode_edit</md-icon>
               </div>
           </md-button>
         </md-menu-item>
-        <md-menu-item ng-show="home.user">
+        <md-menu-item ng-show="home.account">
           <md-button ng-click="home.go('account.logout')" class="md-primary">
               <div layout="row">
                 <p flex>Logout</p>
@@ -57,7 +57,7 @@
       </md-menu-content>
     </md-menu>
 
-    <md-button ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add Job">
+    <md-button ng-if="home.account.employer && home.account.approved" ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add a Job">
       <md-icon>add</md-icon>
     </md-button>
   </div>
