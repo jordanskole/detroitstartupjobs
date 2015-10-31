@@ -6,7 +6,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController ($scope, $log, $window, $state, $stateParams, $mdDialog, Auth, Accounts) {
+  function LoginController ($scope, $log, $window, $state, $stateParams, $mdDialog, $mdToast, Auth, Accounts) {
 
     var vm = this;
     vm.loading = false;
@@ -23,13 +23,23 @@
 
     $scope.$watch('account.tabIndex', function (current, old) {
       if (current == 0 && old != 0) {
-        $state.transitionTo('account.login', {action: 'login'}, {inherit: false, notify: false, reload: false});
+        $state.transitionTo('login', {action: 'login'}, {inherit: false, notify: false, reload: false});
       } else if (current == 1 && old != 1) {
-        $state.transitionTo('account.login', {action: 'register'}, {inherit: false, notify: false, reload: false});
+        $state.transitionTo('login', {action: 'register'}, {inherit: false, notify: false, reload: false});
       } else if (current == 2 && old != 2) {
-        $state.transitionTo('account.login', {action: 'social'}, {inherit: false, notify: false, reload: false});
+        $state.transitionTo('login', {action: 'social'}, {inherit: false, notify: false, reload: false});
       }
     });
+
+    vm.toast = function (text, position) {
+      position = position || 'bottom right';
+      $mdToast.show(
+        $mdToast
+          .simple()
+          .content(text)
+          .position(position)
+      );
+    }
 
     vm.loginWithPassword = function () {
       vm.loading = true;
