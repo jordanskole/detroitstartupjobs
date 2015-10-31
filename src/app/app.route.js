@@ -16,9 +16,16 @@
       })
       .state('logout', {
         url: '/logout?redirect',
-        controller: function (Auth, $state, $stateParams) {
+        controller: function (Auth, $state, $stateParams, $mdToast) {
           Auth.$unauth();
-          $state.go($stateParams.redirect || 'home.jobs');
+          $state.go($stateParams.redirect || 'home.jobs')
+          .then( function () {
+            $mdToast.show(
+              $mdToast.simple()
+                .content('Logged Out!')
+                .position('bottom right')
+            );
+          });
         },
         controllerAs: 'logout'
       })
