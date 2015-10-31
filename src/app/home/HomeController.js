@@ -21,6 +21,16 @@
       $state.go(state, params);
     }
 
+    vm.toast = function (text, position) {
+      position = position || 'bottom right';
+      $mdToast.show(
+        $mdToast
+          .simple()
+          .content(text)
+          .position(position)
+      );
+    }
+
     vm.createJob = function (ev) {
       $mdDialog.show({
         controller: 'CreateDialogController',
