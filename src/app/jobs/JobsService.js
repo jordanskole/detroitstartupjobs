@@ -23,7 +23,9 @@
 
     return {
       "$array": Jobs(itemsRef),
-      "$object": $firebaseObject(itemsRef)
+      "$object": function (objectId) {
+        return $firebaseObject(itemsRef.child(objectId));
+      }
     };
   }
 

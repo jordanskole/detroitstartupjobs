@@ -57,12 +57,23 @@
       })
       .state('home.jobs', {
         url: '/jobs',
+        abstract: true,
+        template: '<ui-view flex layout="column" />'
+      })
+      .state('home.jobs.index', {
+        url: '/index',
         templateUrl: 'app/jobs/index.html',
         controller: 'JobsController',
         controllerAs: 'jobs'
+      })
+      .state('home.jobs.detail', {
+        url: '/:id',
+        templateUrl: 'app/jobs/detail.html',
+        controller: 'JobController',
+        controllerAs: 'job'
       });
 
-    $urlRouterProvider.otherwise('/+/jobs');
+    $urlRouterProvider.otherwise('/+/jobs/index');
   }
 
 })();

@@ -1,0 +1,72 @@
+<md-subheader>
+  Jobs Index &raquo; {{ job.detail.title }}
+</md-subheader>
+
+<div flex layout="row">
+  <div flex="35" layout="column">
+    <md-card>
+      <md-card-content>
+        <h2 class="md-title">Company Information</h2>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{job.detail.location}}&zoom=14&size=600x300&maptype=roadmap
+        &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI" class="md-card-image" alt="" />
+      <md-card-content>
+        <h2 class="md-title">Location:</h2>
+        <p>
+          {{ job.detail.location }}
+        </p>
+      <md-divider></md-divider>
+      <h3 class="md-subhead">Other Jobs Listed in {{ job.detail.location }}:</h3>
+      <md-list flex>
+        <md-list-item href="?test" flex>
+          I'm a Job
+        </md-list-item>
+        <md-list-item href="?test" flex>
+          I'm a different job
+        </md-list-item>
+      </md-list>
+      </md-card-content>
+    </md-card>
+  </div><!-- left column -->
+
+  <div flex-offset="5" flex>
+    <md-card>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h1 class="md-title">{{ job.detail.title }}</h1>
+          <span flex></span>
+          <md-button class="md-icon-button" aria-label="favorite">
+            <md-icon>favorite_border</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Apply on Site">
+            <md-icon>exit_to_app</md-icon>
+          </md-button>
+        </div><!-- toolbar tools -->
+      </md-toolbar>
+      <md-card-content>
+        <h2 class="md-subhead">Description:</h2>
+        <p>
+          {{ job.detail.description }}
+        </p>
+        <h2 class="md-subhead">Skills:</h2>
+        <md-chips class="custom-chips" ng-model="job.detail.skills" readonly="true"></md-chips>
+        <h2 class="md-subhead">Salary:</h2>
+        <div layout>
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">$30k</span>
+          </div>
+          <md-slider flex ng-model="job.detail.salary" min="30" max="120" aria-label="blue" id="blue-slider" class="md-primary" ng-disabled="true">
+          </md-slider>
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">$120k</span>
+          </div>
+        </div><!-- slider layout -->
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button>Apply on Site</md-button>
+      </div>
+    </md-card>
+  </div><!-- right column -->
+</div><!-- row -->
