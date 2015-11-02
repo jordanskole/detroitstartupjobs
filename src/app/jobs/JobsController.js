@@ -18,8 +18,8 @@
       $log.log(chip);
     }
 
-    vm.goToJob = function () {
-      $log.log('Clicked on Job:');
+    vm.go = function (route, params) {
+      $state.go(route, params);
     }
 
     vm.go = function (state, params) {
