@@ -49,12 +49,30 @@
         </div><!-- toolbar tools -->
       </md-toolbar>
       <md-card-content>
+
         <h2 class="md-subhead">Summary:</h2>
         <p>
           {{ job.detail.summary }}
         </p>
+
         <h2 class="md-subhead">Skills:</h2>
         <md-chips class="custom-chips" ng-model="job.detail.skills" readonly="true"></md-chips>
+
+        <h2 class="md-subhead">About The Role:</h2>
+        <p>
+          {{ job.detail.description }}
+        </p>
+
+        <h2 class="md-subhead">Responsibilities:</h2>
+        <p>
+          {{ job.detail.responsibility }}
+        </p>
+
+        <h2 class="md-subhead">Requirements:</h2>
+        <p>
+          {{ job.detail.requirements }}
+        </p>
+
       </md-card-content>
       <div class="md-actions" layout="row" layout-align="end center" style="margin-right: 20px;">
         <md-button href="{{ job.detail.url }}">Apply on Site</md-button>
