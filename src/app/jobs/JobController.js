@@ -14,14 +14,6 @@
       .$loaded()
       .then(function (data) {
         vm.detail = data;
-
-        vm.myJob = function () {
-          if (CurrentAuth.uid === vm.detail.uid) {
-            return true;
-          }
-
-          return false;
-        }
       });
 
 
