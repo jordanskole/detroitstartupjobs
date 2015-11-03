@@ -40,32 +40,21 @@
           <md-button class="md-icon-button" aria-label="favorite">
             <md-icon>favorite_border</md-icon>
           </md-button>
-          <md-button class="md-icon-button" aria-label="Apply on Site">
+          <md-button href="{{ job.detail.url }}" class="md-icon-button" aria-label="Apply on Site">
             <md-icon>exit_to_app</md-icon>
           </md-button>
         </div><!-- toolbar tools -->
       </md-toolbar>
       <md-card-content>
-        <h2 class="md-subhead">Description:</h2>
+        <h2 class="md-subhead">Summary:</h2>
         <p>
-          {{ job.detail.description }}
+          {{ job.detail.summary }}
         </p>
         <h2 class="md-subhead">Skills:</h2>
         <md-chips class="custom-chips" ng-model="job.detail.skills" readonly="true"></md-chips>
-        <h2 class="md-subhead">Salary:</h2>
-        <div layout>
-          <div flex="10" layout layout-align="center center">
-            <span class="md-body-1">$30k</span>
-          </div>
-          <md-slider flex ng-model="job.detail.salary" min="30" max="120" aria-label="blue" id="blue-slider" class="md-primary" ng-disabled="true">
-          </md-slider>
-          <div flex="10" layout layout-align="center center">
-            <span class="md-body-1">$120k</span>
-          </div>
-        </div><!-- slider layout -->
       </md-card-content>
-      <div class="md-actions" layout="row" layout-align="end center">
-        <md-button>Apply on Site</md-button>
+      <div class="md-actions" layout="row" layout-align="end center" style="margin-right: 20px;">
+        <md-button href="{{ job.detail.url }}">Apply on Site</md-button>
       </div>
     </md-card>
   </div><!-- right column -->

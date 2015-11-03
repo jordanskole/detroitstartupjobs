@@ -24,25 +24,7 @@
 
     vm.go = function (state, params) {
       $state.go(state, params);
-    }
-
-    vm.createJob = function (ev) {
-      $mdDialog.show({
-        controller: 'CreateDialogController',
-        controllerAs: 'dialog',
-        templateUrl: 'app/jobs/create.html',
-        parent: angular.element($document.body),
-        targetEvent: ev,
-        clickOutsideToClose: true
-      })
-      .then( function (job) {
-        var meta = {
-          "created_on": moment().format()
-        }
-        Jobs.$array.$add(_.merge(job, meta));
-        $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));
-      });
-    }
+    }    
 
   }
 

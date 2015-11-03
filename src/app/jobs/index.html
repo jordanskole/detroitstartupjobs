@@ -10,8 +10,8 @@
         <p>
           <span ng-repeat="skill in job.skills" class="md-hue-1">{{ skill }}{{$last ? '' : ', '}}</span>
         </p>
-        <p>{{ job.description }}</p>
         <md-icon class="md-secondary" ng-click="job.favorite = !job.favorite" ng-class="{'md-warn': job.favorite}" aria-label="Save to Favorites">{{ job.favorite ? 'favorite' : 'favorite_border' }}</md-icon>
+        <p style="white-space: nowrap;text-overflow: ellipsis; overflow: hidden;">{{ job.summary }}</p>
       </div>
       <md-divider></md-divider>
     </md-list-item>
