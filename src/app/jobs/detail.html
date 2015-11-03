@@ -37,8 +37,11 @@
         <div class="md-toolbar-tools">
           <h1 class="md-title">{{ job.detail.title }}</h1>
           <span flex></span>
-          <md-button class="md-icon-button" aria-label="favorite">
+          <md-button ng-show="!job.myJob()" class="md-icon-button" aria-label="Favorite Job Post">
             <md-icon>favorite_border</md-icon>
+          </md-button>
+          <md-button ng-show="job.myJob()" ui-sref="home.jobs.edit({id: job.detail.$id })" class="md-icon-button" aria-label="Edit Job Post">
+            <md-icon>mode_edit</md-icon>
           </md-button>
           <md-button href="{{ job.detail.url }}" class="md-icon-button" aria-label="Apply on Site">
             <md-icon>exit_to_app</md-icon>
