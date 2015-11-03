@@ -8,7 +8,7 @@
       </md-button>
     </div>
   </md-toolbar>
-  <md-dialog-content>
+  <md-dialog-content style="overflow: scroll;">
     <div class="md-dialog-content">
 
       <div layout>
@@ -25,19 +25,17 @@
         </md-input-container>
         <md-input-container flex>
           <label>Company</label>
-          <input type="text" ng-model="job.company">
+          <input type="text" ng-model="dialog.job.company">
         </md-input-container>
       </div>
 
       <div layout>
-        <div flex="10" layout layout-align="center center">
-          <span class="md-body-1">Salary:</span>
-        </div>
-        <md-slider flex min="30" max="120" ng-model="dialog.job.salary" aria-label="Salary" class="md-primary"></md-slider>
-        <div flex="10" layout layout-align="center center">
-          {{ '$' + dialog.job.salary + 'k' }}
-        </div>
+        <md-input-container flex>
+          <label>Job Posting URL</label>
+          <input type="text" ng-model="dialog.job.url">
+        </md-input-container>
       </div>
+
       <div layout>
         <div flex="10" layout layout-align="center center">
           <span class="md-body-1">Skills:</span>
@@ -46,10 +44,15 @@
         </md-chips>
       </div>
 
-      <md-input-container>
-        <label>Description</label>
-        <textarea ng-model="dialog.job.description"></textarea>
-      </md-input-container>
+      <div layout-padding></div>
+
+      <div layout>
+        <md-input-container flex>
+          <label>Summary</label>
+          <textarea ng-model="dialog.job.summary" md-maxlength="150"></textarea>
+        </md-input-container>
+      </div>
+
     </div>
   </md-dialog-content>
   <div class="md-actions" layout="row">
@@ -57,7 +60,7 @@
     <md-button ng-click="dialog.cancel()" >
      Cancel
     </md-button>
-    <md-button ng-click="dialog.save()" style="margin-right:20px;" >
+    <md-button ng-click="dialog.save()" style="margin-right:20px;">
       Save
     </md-button>
   </div>

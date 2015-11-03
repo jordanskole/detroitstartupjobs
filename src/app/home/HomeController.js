@@ -6,7 +6,7 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController ($log, $state, $mdDialog, $document, $mdToast, CurrentAuth, Accounts) {
+  function HomeController ($log, $state, $mdDialog, $document, $mdToast, CurrentAuth, Accounts, Jobs) {
 
     var vm = this;
     if (CurrentAuth) {
@@ -42,7 +42,8 @@
       })
       .then( function (job) {
         var meta = {
-          "created_on": moment().format()
+          "created_on": moment().format(),
+          "uid": CurrentAuth.uid
         }
         Jobs.$array.$add(_.merge(job, meta));
         $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));
