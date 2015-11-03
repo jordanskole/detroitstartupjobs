@@ -71,6 +71,12 @@
         templateUrl: 'app/jobs/detail.html',
         controller: 'JobController',
         controllerAs: 'job'
+      })
+      .state('home.jobs.edit', {
+        url: '/:id/edit',
+        templateUrl: 'app/jobs/edit.html',
+        controller: 'EditJobController',
+        controllerAs: 'job'
       });
 
     $urlRouterProvider.otherwise('/+/jobs/index');
