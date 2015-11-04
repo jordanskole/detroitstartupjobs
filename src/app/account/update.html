@@ -10,7 +10,7 @@
 
       <div flex="40" layout-padding>
         <p class="md-body-1">
-          Manage this basic information — your name, email, and phone number — to help {{ account.employer ? 'applicants' : 'employers'}} find you and to quickly apply for jobs {{ account.employer ? 'you have posted' : 'you like'}}.
+          Manage this basic information — your name, email, and phone number — to help {{ profile.employer ? 'applicants' : 'employers'}} find you and to quickly apply for jobs {{ profile.employer ? 'you have posted' : 'you like'}}.
         </p>
         <md-card>
           <md-list-item md-no-ink>
@@ -34,182 +34,183 @@
               Add a Job Listing
             </md-button>
           </md-list-item>
-        </md-list>
         <p class="md-headline">
           Your profile is {{ profile.complete }}% complete
         </p>
         <md-progress-linear md-mode="determinate" value="{{ profile.complete }}"></md-progress-linear>
+        </md-list>
       </div>
 
-      <span flex="5"></span>
+      <div flex flex-offset="5" layout="column">
 
-      <md-card flex>
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">account_circle</md-icon>
+            Personal Information
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Email Address</label>
+                <input type="email" ng-model="profile.email">
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex="45">
+                <label>First name</label>
+                <input ng-model="profile.first_name">
+              </md-input-container>
+              <md-input-container flex="50" flex-offset="5">
+                <label>Last Name</label>
+                <input ng-model="profile.last_name">
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column">
+              <md-datepicker ng-model="account.birthday" md-placeholder="Birthday" ng-change="account.birthdateChange()"></md-datepicker>
+            </div>
+          </div>
+        </md-card>
 
-        <md-subheader class="md-primary">
-          <md-icon class="md-primary">account_circle</md-icon>
-          Personal Information
-        </md-subheader>
-        <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
-        <div layout layout-sm="column" layout-align="center">
-          <md-input-container flex="95">
-            <label>Email Address</label>
-            <input type="email" ng-model="profile.email">
-          </md-input-container>
-        </div>
-        <div layout layout-sm="column" layout-align="center">
-          <md-input-container flex="45">
-            <label>First name</label>
-            <input ng-model="profile.first_name">
-          </md-input-container>
-          <span flex="5"></span>
-          <md-input-container flex="45">
-            <label>Last Name</label>
-            <input ng-model="profile.last_name">
-          </md-input-container>
-        </div>
-        <div layout layout-sm="column" layout-padding>
-          <md-datepicker ng-model="account.birthday" md-placeholder="Birthday" ng-change="account.birthdateChange()"></md-datepicker>
-        </div>
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">phone</md-icon>
+            Phone
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Mobile Phone</label>
+                <input type="text" ng-model="profile.mobile">
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Home Phone</label>
+                <input type="text" ng-model="profile.phone">
+              </md-input-container>
+            </div>
+          </div>
+        </md-card>
 
-
-        <md-divider></md-divider>
-
-        <md-subheader class="md-primary">
-          <md-icon class="md-primary">phone</md-icon>
-          Phone
-        </md-subheader>
-        <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
-        <div layout layout-sm="column" layout-align="center">
-          <md-input-container flex="95">
-            <label>Mobile Phone</label>
-            <input type="text" ng-model="profile.mobile">
-          </md-input-container>
-        </div>
-        <div layout layout-sm="column" layout-align="center">
-          <md-input-container flex="95">
-            <label>Home Phone</label>
-            <input type="text" ng-model="profile.phone">
-          </md-input-container>
-        </div>
-
-        <md-divider></md-divider>
-
-        <div ng-show="!account.employer">
+        <md-card ng-show="!profile.employer">
           <md-subheader class="md-primary">
             <md-icon class="md-primary">home</md-icon>
             Address
           </md-subheader>
           <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
-          <div layout layout-sm="column" layout-align="center">
-            <md-input-container flex="95">
-              <label>Street</label>
-              <input ng-model="profile.street">
-            </md-input-container>
-          </div>
-          <div layout layout-sm="column" layout-align="center">
-            <md-input-container flex="95">
-              <label>Street 2</label>
-              <input ng-model="profile.street2">
-            </md-input-container>
-          </div>
-          <div layout layout-sm="column" layout-align="center">
-            <md-input-container flex="40">
-              <label>City</label>
-              <input ng-model="profile.city">
-            </md-input-container>
-            <md-input-container flex="30">
-              <label>State</label>
-              <md-select ng-model="profile.state">
-                <md-option ng-repeat="state in account.states" value="{{state.abbrev}}">
-                  {{state.abbrev}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-            <md-input-container flex="25">
-              <label>Postal Code</label>
-              <input name="postalCode" ng-model="profile.postal_code" placeholder="12345"
-                     required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-              <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
-                <div ng-message="required" class="my-message">You must supply a postal code.</div>
-                <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-                  code.
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Street</label>
+                <input ng-model="profile.street">
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Street 2</label>
+                <input ng-model="profile.street2">
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex="40">
+                <label>City</label>
+                <input ng-model="profile.city">
+              </md-input-container>
+              <md-input-container flex="25" flex-offset="5">
+                <label>State</label>
+                <md-select ng-model="profile.state">
+                  <md-option ng-repeat="state in account.states" value="{{state.abbrev}}">
+                    {{state.abbrev}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container flex="25" flex-offset="5">
+                <label>Postal Code</label>
+                <input name="postalCode" ng-model="profile.postal_code" placeholder="12345"
+                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
+                  <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                  <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                    code.
+                  </div>
+                  <div ng-message="md-maxlength" class="my-message">
+                    Don't use the long version silly...we don't need to be that specific...
+                  </div>
                 </div>
-                <div ng-message="md-maxlength" class="my-message">
-                  Don't use the long version silly...we don't need to be that specific...
-                </div>
-              </div>
-            </md-input-container>
+              </md-input-container>
+            </div>
           </div>
+        </md-card>
 
-          <md-divider></md-divider>
-
-        </div><!-- ng-show: !account.employer -->
-
-        <div ng-show="account.employer">
-
+        <md-card flex ng-show="profile.employer">
           <md-subheader class="md-primary">
             <md-icon class="md-primary">business</md-icon>
             Company Information
           </md-subheader>
           <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
-          <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
-            <md-input-container flex="95">
-              <label>Company Name</label>
-              <input ng-model="profile.company.name">
-            </md-input-container>
-          </div>
-          <div ng-show="account.employer" layout layout-sm="column" layout-align="center">
-            <md-input-container flex="95">
-              <label>Company Website</label>
-              <input ng-model="profile.company.street">
-            </md-input-container>
-          </div>
-          <div ng-show="account.employer" layout layout-sm="column" layout-align="center">
-            <md-input-container flex="95">
-              <label>Street</label>
-              <input ng-model="profile.company.street2">
-            </md-input-container>
-          </div>
-          <div layout layout-sm="column" layout-align="center">
-            <md-input-container flex="40">
-              <label>City</label>
-              <input ng-model="profile.company.city">
-            </md-input-container>
-            <md-input-container flex="30">
-              <label>State</label>
-              <md-select ng-model="profile.state">
-                <md-option ng-repeat="state in account.states" value="{{state.abbrev}}">
-                  {{state.abbrev}}
-                </md-option>
-              </md-select>
-            </md-input-container>
-            <md-input-container flex="25">
-              <label>Postal Code</label>
-              <input name="postalCode" ng-model="profile.company.postalCode" placeholder="12345"
-                     required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-              <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
-                <div ng-message="required" class="my-message">You must supply a postal code.</div>
-                <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-                  code.
+          <div layout-padding>
+            <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Company Name</label>
+                <input ng-model="profile.company.name">
+              </md-input-container>
+            </div>
+            <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Company Website</label>
+                <input ng-model="profile.company.street">
+              </md-input-container>
+            </div>
+            <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Street</label>
+                <input ng-model="profile.company.street2">
+              </md-input-container>
+            </div>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex="40">
+                <label>City</label>
+                <input ng-model="profile.company.city">
+              </md-input-container>
+              <md-input-container flex="25" flex-offset="5">
+                <label>State</label>
+                <md-select ng-model="profile.state">
+                  <md-option ng-repeat="state in profile.states" value="{{state.abbrev}}">
+                    {{state.abbrev}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container flex="25" flex-offset="5">
+                <label>Postal Code</label>
+                <input name="postalCode" ng-model="profile.company.postalCode" placeholder="12345"
+                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
+                  <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                  <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                    code.
+                  </div>
+                  <div ng-message="md-maxlength" class="my-message">
+                    Don't use the long version silly...we don't need to be that specific...
+                  </div>
                 </div>
-                <div ng-message="md-maxlength" class="my-message">
-                  Don't use the long version silly...we don't need to be that specific...
-                </div>
-              </div>
-            </md-input-container>
+              </md-input-container>
+            </div>
           </div>
+        </md-card>
 
-          <md-divider></md-divider>
-
-        </div><!-- ng-show: account.employer -->
-
-      </md-card>
+      </div>
 
     </div><!-- row -->
 
     <div layout="row" layout-align="end" layout-padding md-theme="grey">
-      <md-button layout class="md-primary" ui-sref="home.jobs">
+      <md-button ng-show="!profile.employer" layout class="md-primary" ui-sref="home.jobs">
         Back to Jobs Listings
+        <md-icon>arrow_forward</md-icon>
+      </md-button>
+      <md-button ng-show="profile.employer" layout class="md-primary" ui-sref="home.jobs">
+        Create a Job Posting
         <md-icon>arrow_forward</md-icon>
       </md-button>
     </div><!-- row -->
