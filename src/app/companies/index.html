@@ -1,0 +1,40 @@
+<md-subheader>
+  My Companies:
+</md-subheader>
+
+<md-grid-list md-cols="3" md-gutter="10px" md-row-height="2:3">
+  <md-grid-tile ng-repeat="company in [1,2,3]" flex>
+    <md-card flex>
+      <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center=Detroit,MI
+        &zoom=13&size=400x200
+        &maptype=roadmap&markers=color:red,size:mid|Detroit,MI
+        &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI">
+      <md-card-content>
+        <h2 class="md-subheader md-primary">
+          <md-icon class="md-primary">{{company === 1 ? 'stars' : 'verified_user'}}</md-icon>
+          Company name</h2>
+        <p>
+          Detroit, MI
+        </p>
+        <p>
+          {{'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean aliquet orci vel leo iaculis rutrum. Nunc nisi leo, sollicitudin pharetra turpis vel, rutrum cursus nisi. Proin quis odio nec felis viverra laoreet quis tempor dolor. Nam enim nunc, mollis quis nulla vel, faucibus viverra nulla. Morbi porttitor turpis non lectus ullamcorper tincidunt sit amet in ligula.' | limitTo:150}}{{ summary.length > 150 ? '&hellip;' : ''}}
+        </p>
+        <p>
+          {{ company }} Jobs Listed
+        </p>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button class="md-icon-button">
+          <md-icon>mode_edit<md-icon>
+        </md-button>
+        <md-button class="md-icon-button">
+          <md-icon>expand_more<md-icon>
+        </md-button>
+      </div>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>
+
+<md-subheader>
+  All Companies:
+</md-subheader>

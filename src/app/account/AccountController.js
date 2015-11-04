@@ -6,7 +6,7 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController ($log, $scope, $stateParams, Accounts) {
+  function AccountController ($log, $scope, $stateParams, Accounts, Companies) {
 
     var vm = this;
     Accounts
@@ -14,7 +14,34 @@
       .$bindTo($scope, 'profile')
       .then( function () {
         vm.birthday = new Date($scope.profile.birthday);
+      })
+      .then( function () {
+        // if ($scope.profile.primary_company !== undefined) {
+        //   Companies
+        //     .$object($scope.profile.primary_company_id)
+        //     .$loaded()
+        //     .then(function (data) {
+        //       vm.selectedCompany = data;
+        //     })
+        // }
       });
+
+    Companies
+      .$array
+      .$loaded()
+      .then( function (data) {
+        vm.companies = data;
+      })
+
+    vm.searchTextChange = function (text) {
+      $log.log('Search text changed to ' + text);
+    }
+
+    vm.selectedItemChange = function (item) {
+      $log.log(item)
+      $scope.profile.primary_company_id = item.$id;
+      // vm.selectedCompany = item;
+    }
 
     vm.birthdateChange = function () {
       $scope.profile.birthday = vm.birthday.toString();

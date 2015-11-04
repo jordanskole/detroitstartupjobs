@@ -10,6 +10,9 @@
     var itemsRef = new Firebase(FIREBASE_URL + "/companies");
 
     var Companies = $firebaseArray.$extend({
+      getMyCompanies: function (uid) {
+        var query = '';
+      }
     });
 
     return {
