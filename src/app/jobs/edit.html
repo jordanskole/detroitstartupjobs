@@ -1,0 +1,97 @@
+<md-subheader>
+  Jobs Index &raquo; <span class="md-warn">Now Editing: {{ detail.title }}</span>
+</md-subheader>
+
+<div flex layout="row">
+  <div flex="35" layout="column">
+    <md-card>
+      <md-card-content>
+        <h2 class="md-title">Company Information</h2>
+      </md-card-content>
+    </md-card>
+    <md-card>
+      <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{detail.location}}&zoom=14&size=600x300&maptype=roadmap
+        &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI" class="md-card-image" alt="" />
+      <md-card-content>
+        <h2 class="md-title">Location:</h2>
+        <p>
+          {{ detail.location }}
+        </p>
+      <md-divider></md-divider>
+      <h3 class="md-subhead">Other Jobs Listed in {{ detail.location }}:</h3>
+      <md-list flex>
+        <md-list-item href="?test" flex>
+          I'm a Job
+        </md-list-item>
+        <md-list-item href="?test" flex>
+          I'm a different job
+        </md-list-item>
+      </md-list>
+      </md-card-content>
+    </md-card>
+  </div><!-- left column -->
+
+  <div flex-offset="5" flex>
+    <md-card>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h1 class="md-title">{{ detail.title }}</h1>
+          <span flex></span>
+          <span flex></span>
+          <md-button ui-sref="home.jobs.detail({ id: detail.$id })" class="md-icon-button" aria-label="Favorite Job Post">
+            <md-icon>save</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="favorite">
+            <md-icon>help</md-icon>
+          </md-button>
+        </div><!-- toolbar tools -->
+      </md-toolbar>
+
+
+      <md-card-content>
+
+        <md-input-container class="md-block">
+          <label>Summary:</label>
+          <textarea type="text" ng-model="detail.summary" md-maxlength="150"></textarea>
+        </md-input-container>
+
+        <div layout-padding></div>
+
+        <md-input-container class="md-block">
+          <label>URL:</label>
+          <input type="text" ng-model="detail.url">
+        </md-input-container>
+
+        <h2 class="md-subhead">Skills:</h2>
+        <md-chips class="custom-chips" ng-model="detail.skills"></md-chips>
+
+        <div layout-padding></div>
+
+        <md-input-container class="md-block">
+          <label>About the Role:</label>
+          <textarea type="text" ng-model="detail.description" rows="4" minlength="255"></textarea>
+        </md-input-container>
+
+        <div layout-padding></div>
+
+        <md-input-container class="md-block">
+          <label>Responsibilities:</label>
+          <textarea type="text" ng-model="detail.responsibility" rows="4" minlength="255"></textarea>
+        </md-input-container>
+
+        <div layout-padding></div>
+
+        <md-input-container class="md-block">
+          <label>Requirements:</label>
+          <textarea type="text" ng-model="detail.requirements" rows="4" minlength="255"></textarea>
+        </md-input-container>
+
+      </md-card-content>
+
+
+      <div class="md-actions" layout="row" layout-align="end center" style="margin-right: 20px;">
+        <md-button>Save</md-button>
+      </div>
+    </md-card>
+  </div><!-- right column -->
+</div><!-- row -->
