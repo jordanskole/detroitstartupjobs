@@ -153,7 +153,7 @@
           <div layout-padding>
             <div layout layout-sm="column" layout-align="center">
               <md-autocomplete flex
-                md-selected-item="selectedCompany"
+                md-selected-item="account.selectedCompany"
                 md-search-text="account.searchText"
                 md-search-text-change="account.searchTextChange(account.searchText)"
                 md-selected-item-change="account.selectedItemChange(company)"
@@ -178,23 +178,23 @@
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex>
                 <label>Company Website</label>
-                <input ng-model="selectedCompany.street">
+                <input ng-model="account.selectedCompany.street">
               </md-input-container>
             </div>
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex>
                 <label>Street</label>
-                <input ng-model="selectedCompany.street2">
+                <input ng-model="account.selectedCompany.street2">
               </md-input-container>
             </div>
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex="40">
                 <label>City</label>
-                <input ng-model="selectedCompany.city">
+                <input ng-model="account.selectedCompany.city">
               </md-input-container>
               <md-input-container flex="25" flex-offset="5">
                 <label>State</label>
-                <md-select ng-model="selectedCompany.state">
+                <md-select ng-model="account.selectedCompany.state">
                   <md-option ng-repeat="state in profile.states" value="{{state.abbrev}}">
                     {{state.abbrev}}
                   </md-option>
@@ -202,7 +202,7 @@
               </md-input-container>
               <md-input-container flex="25" flex-offset="5">
                 <label>Postal Code</label>
-                <input name="postalCode" ng-model="selectedCompany.zip" placeholder="12345"
+                <input name="postalCode" ng-model="account.selectedCompany.zip" placeholder="12345"
                        required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
                 <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
                   <div ng-message="required" class="my-message">You must supply a postal code.</div>

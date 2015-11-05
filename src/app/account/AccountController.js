@@ -16,14 +16,15 @@
         vm.birthday = new Date($scope.profile.birthday);
       })
       .then( function () {
-        // if ($scope.profile.primary_company !== undefined) {
-        //   Companies
-        //     .$object($scope.profile.primary_company_id)
-        //     .$loaded()
-        //     .then(function (data) {
-        //       vm.selectedCompany = data;
-        //     })
-        // }
+        if ($scope.profile.primary_company_id !== undefined) {
+          Companies
+            .$object($scope.profile.primary_company_id)
+            .$loaded()
+            .then(function (data) {
+              $log.log(data)
+              vm.selectedCompany = data;
+            })
+        }
       });
 
     Companies
@@ -38,7 +39,7 @@
     }
 
     vm.selectedItemChange = function (item) {
-      $log.log(item)
+      $log.log(item.$id)
       $scope.profile.primary_company_id = item.$id;
       // vm.selectedCompany = item;
     }
