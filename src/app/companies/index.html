@@ -13,7 +13,9 @@
         &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI">
       <md-card-content>
         <h2 class="md-subheader md-primary">
-          <md-icon class="md-primary">{{company === 1 ? 'stars' : 'verified_user'}}</md-icon>
+          <md-icon ng-if="company.accounts[home.account.$id] === '_primary'" class="md-primary">stars</md-icon>
+          <md-icon ng-if="company.accounts[home.account.$id] === 'verified'" class="md-primary">verified_user</md-icon>
+          <md-icon ng-if="company.accounts[home.account.$id] === 'pending'" class="md-primary">timer</md-icon>
           {{ company.name }}</h2>
         <p>
           {{ company.city }}, {{ company.state }}

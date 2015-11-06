@@ -12,10 +12,6 @@
     vm.list = Companies.$array.getMyCompanies(null);
     vm.myList = Companies.$array.getMyCompanies();
 
-    vm.myList.$loaded().then(function () {
-      $log.log(vm.myList);
-    });
-
   }
 
 })();
