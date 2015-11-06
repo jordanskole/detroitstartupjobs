@@ -88,6 +88,12 @@
         templateUrl: 'app/companies/index.html',
         controller: 'CompaniesController',
         controllerAs: 'companies'
+      })
+      .state('home.companies.detail', {
+        url: '/:id',
+        templateUrl: 'app/companies/detail.html',
+        controller: 'CompanyDetailController',
+        controllerAs: 'company'
       });
 
     $urlRouterProvider.otherwise('/+/jobs/index');

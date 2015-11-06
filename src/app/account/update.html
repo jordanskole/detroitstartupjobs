@@ -3,7 +3,7 @@
   <md-content layout="column">
 
     <div layout="row">
-      <h1 class="md-display-1">Your personal info</h1>
+      <h1 class="md-headline">Your personal info</h1>
     </div><!-- row -->
 
     <div layout="row">
@@ -227,7 +227,7 @@
         Back to Jobs Listings
         <md-icon>arrow_forward</md-icon>
       </md-button>
-      <md-button ng-show="profile.employer" layout class="md-primary" ui-sref="home.jobs">
+      <md-button ui-sref="home.companies.index" ng-show="profile.employer" layout class="md-primary" ui-sref="home.jobs">
         Next: Manage Your Companies
         <md-icon>arrow_forward</md-icon>
       </md-button>

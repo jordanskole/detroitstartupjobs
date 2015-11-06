@@ -41,7 +41,9 @@
     vm.selectedItemChange = function (item) {
       $log.log(item.$id)
       $scope.profile.primary_company_id = item.$id;
-      // vm.selectedCompany = item;
+      // update the company with the account uid
+      var primaryCompany = Companies.$object(item.$id);
+
     }
 
     vm.birthdateChange = function () {
