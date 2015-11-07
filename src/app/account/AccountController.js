@@ -6,7 +6,7 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController ($log, $scope, $stateParams, Accounts, Companies) {
+  function AccountController ($log, $scope, $stateParams, CurrentAuth, Accounts, Companies) {
 
     var vm = this;
     Accounts
@@ -41,8 +41,14 @@
     vm.selectedItemChange = function (item) {
       $log.log(item.$id)
       $scope.profile.primary_company_id = item.$id;
+
+      // clear out the current company
+      var primaryCompanies = Companies.$array.getMyCompanies('_primary');
+      $log.log('primaryCompanies: ');
+      $log.log(primaryCompanies);
       // update the company with the account uid
-      var primaryCompany = Companies.$object(item.$id);
+      // var primaryCompany = Companies.$object(item.$id);
+      // primaryCompany.accounts[CurrentAuth.uid] = '_primary';
 
     }
 

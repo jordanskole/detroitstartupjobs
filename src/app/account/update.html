@@ -170,7 +170,7 @@
                     </span>
                   </span>
                   <md-not-found>
-                    No matches found.
+                    No companies named {{ account.searchText }} were found. <a href="mailto:jordan@detroitstartupjobs.com?subject=Please%20Add%20{{ account.searchText }}%20to%20Detroit%20%Startup%20Jobs">Let us know!</a>
                   </md-not-found>
                 </md-item-template>
               </md-autocomplete>
@@ -178,24 +178,24 @@
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex>
                 <label>Company Website</label>
-                <input ng-model="account.selectedCompany.street">
+                <input ng-model="account.selectedCompany.street" disabled>
               </md-input-container>
             </div>
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex>
                 <label>Street</label>
-                <input ng-model="account.selectedCompany.street2">
+                <input ng-model="account.selectedCompany.street2" disabled>
               </md-input-container>
             </div>
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex="40">
                 <label>City</label>
-                <input ng-model="account.selectedCompany.city">
+                <input ng-model="account.selectedCompany.city" disabled>
               </md-input-container>
               <md-input-container flex="25" flex-offset="5">
                 <label>State</label>
                 <md-select ng-model="account.selectedCompany.state">
-                  <md-option ng-repeat="state in profile.states" value="{{state.abbrev}}">
+                  <md-option ng-repeat="state in profile.states" value="{{state.abbrev}}" disabled>
                     {{state.abbrev}}
                   </md-option>
                 </md-select>
@@ -203,7 +203,7 @@
               <md-input-container flex="25" flex-offset="5">
                 <label>Postal Code</label>
                 <input name="postalCode" ng-model="account.selectedCompany.zip" placeholder="12345"
-                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5" disabled>
                 <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
                   <div ng-message="required" class="my-message">You must supply a postal code.</div>
                   <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
