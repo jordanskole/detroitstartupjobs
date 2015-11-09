@@ -71,6 +71,29 @@
         templateUrl: 'app/jobs/detail.html',
         controller: 'JobController',
         controllerAs: 'job'
+      })
+      .state('home.jobs.edit', {
+        url: '/:id/edit',
+        templateUrl: 'app/jobs/edit.html',
+        controller: 'EditJobController',
+        controllerAs: 'job'
+      })
+      .state('home.companies', {
+        url: '/companies',
+        abstract: true,
+        template: '<ui-view flex layout="column" />'
+      })
+      .state('home.companies.index', {
+        url: '/index',
+        templateUrl: 'app/companies/index.html',
+        controller: 'CompaniesController',
+        controllerAs: 'companies'
+      })
+      .state('home.companies.detail', {
+        url: '/:id',
+        templateUrl: 'app/companies/detail.html',
+        controller: 'CompanyDetailController',
+        controllerAs: 'company'
       });
 
     $urlRouterProvider.otherwise('/+/jobs/index');

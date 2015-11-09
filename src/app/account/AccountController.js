@@ -6,7 +6,7 @@
     .controller('AccountController', AccountController);
 
   /** @ngInject */
-  function AccountController ($log, $scope, $stateParams, Accounts) {
+  function AccountController ($log, $scope, $stateParams, CurrentAuth, Accounts, Companies) {
 
     var vm = this;
     Accounts
@@ -14,7 +14,43 @@
       .$bindTo($scope, 'profile')
       .then( function () {
         vm.birthday = new Date($scope.profile.birthday);
+      })
+      .then( function () {
+        if ($scope.profile.primary_company_id !== undefined) {
+          Companies
+            .$object($scope.profile.primary_company_id)
+            .$loaded()
+            .then(function (data) {
+              $log.log(data)
+              vm.selectedCompany = data;
+            })
+        }
       });
+
+    Companies
+      .$array
+      .$loaded()
+      .then( function (data) {
+        vm.companies = data;
+      })
+
+    vm.searchTextChange = function (text) {
+      $log.log('Search text changed to ' + text);
+    }
+
+    vm.selectedItemChange = function (item) {
+      $log.log(item.$id)
+      $scope.profile.primary_company_id = item.$id;
+
+      // clear out the current company
+      var primaryCompanies = Companies.$array.getMyCompanies('_primary');
+      $log.log('primaryCompanies: ');
+      $log.log(primaryCompanies);
+      // update the company with the account uid
+      // var primaryCompany = Companies.$object(item.$id);
+      // primaryCompany.accounts[CurrentAuth.uid] = '_primary';
+
+    }
 
     vm.birthdateChange = function () {
       $scope.profile.birthday = vm.birthday.toString();

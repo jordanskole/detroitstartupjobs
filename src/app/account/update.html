@@ -3,7 +3,7 @@
   <md-content layout="column">
 
     <div layout="row">
-      <h1 class="md-display-1">Your personal info</h1>
+      <h1 class="md-headline">Your personal info</h1>
     </div><!-- row -->
 
     <div layout="row">
@@ -151,41 +151,59 @@
           </md-subheader>
           <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
           <div layout-padding>
-            <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
-              <md-input-container flex>
-                <label>Company Name</label>
-                <input ng-model="profile.company.name">
-              </md-input-container>
+            <div layout layout-sm="column" layout-align="center">
+              <md-autocomplete flex
+                md-selected-item="account.selectedCompany"
+                md-search-text="account.searchText"
+                md-search-text-change="account.searchTextChange(account.searchText)"
+                md-selected-item-change="account.selectedItemChange(company)"
+                md-items="company in account.companies | filter:account.searchText"
+                md-item-text="company.name"
+                md-floating-label="Company Name">
+                <md-item-template>
+                  <span class="item-title">
+                    <span md-highlight-text="searchText">{{ company.name }}</span>
+                  </span>
+                  <span class="item-metadata">
+                    <span class="item-metastat">
+                       - {{ company.city }}, {{ company.state }}
+                    </span>
+                  </span>
+                  <md-not-found>
+                    No companies named {{ account.searchText }} were found. <a href="mailto:jordan@detroitstartupjobs.com?subject=Please%20Add%20{{ account.searchText }}%20to%20Detroit%20%Startup%20Jobs">Let us know!</a>
+                  </md-not-found>
+                </md-item-template>
+              </md-autocomplete>
             </div>
-            <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
+            <div layout layout-sm="column" layout-align="center">
               <md-input-container flex>
                 <label>Company Website</label>
-                <input ng-model="profile.company.street">
+                <input ng-model="account.selectedCompany.street" disabled>
               </md-input-container>
             </div>
-            <div ng-show="profile.employer" layout layout-sm="column" layout-align="center">
+            <div layout layout-sm="column" layout-align="center">
               <md-input-container flex>
                 <label>Street</label>
-                <input ng-model="profile.company.street2">
+                <input ng-model="account.selectedCompany.street2" disabled>
               </md-input-container>
             </div>
             <div layout layout-sm="column" layout-align="center">
               <md-input-container flex="40">
                 <label>City</label>
-                <input ng-model="profile.company.city">
+                <input ng-model="account.selectedCompany.city" disabled>
               </md-input-container>
               <md-input-container flex="25" flex-offset="5">
                 <label>State</label>
-                <md-select ng-model="profile.state">
-                  <md-option ng-repeat="state in profile.states" value="{{state.abbrev}}">
+                <md-select ng-model="account.selectedCompany.state">
+                  <md-option ng-repeat="state in profile.states" value="{{state.abbrev}}" disabled>
                     {{state.abbrev}}
                   </md-option>
                 </md-select>
               </md-input-container>
               <md-input-container flex="25" flex-offset="5">
                 <label>Postal Code</label>
-                <input name="postalCode" ng-model="profile.company.postalCode" placeholder="12345"
-                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <input name="postalCode" ng-model="account.selectedCompany.zip" placeholder="12345"
+                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5" disabled>
                 <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
                   <div ng-message="required" class="my-message">You must supply a postal code.</div>
                   <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
@@ -209,8 +227,8 @@
         Back to Jobs Listings
         <md-icon>arrow_forward</md-icon>
       </md-button>
-      <md-button ng-show="profile.employer" layout class="md-primary" ui-sref="home.jobs">
-        Create a Job Posting
+      <md-button ui-sref="home.companies.index" ng-show="profile.employer" layout class="md-primary" ui-sref="home.jobs">
+        Next: Manage Your Companies
         <md-icon>arrow_forward</md-icon>
       </md-button>
     </div><!-- row -->
