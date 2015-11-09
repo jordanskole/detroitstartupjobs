@@ -89,6 +89,12 @@
         controller: 'CompaniesController',
         controllerAs: 'companies'
       })
+      .state('home.companies.create', {
+        url: '/create',
+        templateUrl: 'app/companies/create.html',
+        controller: 'CompanyCreateController',
+        controllerAs: 'company'
+      })
       .state('home.companies.detail', {
         url: '/:id',
         templateUrl: 'app/companies/detail.html',

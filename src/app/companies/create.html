@@ -1,0 +1,194 @@
+<section layout="row" flex layout-align="center">
+
+  <md-content flex layout="column">
+
+    <div flex layout="row">
+      <h1 class="md-headline">Add a new company</h1>
+    </div><!-- row -->
+
+    <div flex layout="row">
+
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Basic information
+        </p>
+      </div><!-- left column -->
+
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">business</md-icon>
+            Basic Information
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Company Name</label>
+                <input type="text" ng-model="company.name">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex="70">
+                <label>Address</label>
+                <input type="text" ng-model="company.street">
+              </md-input-container>
+
+              <md-input-container flex>
+                <label>Address 2</label>
+                <input type="text" ng-model="company.street2">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex="40">
+                <label>City</label>
+                <input type="text" ng-model="company.city">
+              </md-input-container>
+
+              <md-input-container flex="25" flex-offset="5">
+                <label>State</label>
+                <md-select ng-model="company.state">
+                  <md-option ng-repeat="state in company.states" value="{{state.abbrev}}">
+                    {{state.abbrev}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+
+              <md-input-container flex="25" flex-offset="5">
+                <label>Postal Code</label>
+                <input name="postalCode" ng-model="company.postal_code" placeholder="12345"
+                       required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="profileForm.postalCode.$error" role="alert" multiple>
+                  <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                  <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                    code.
+                  </div>
+                  <div ng-message="md-maxlength" class="my-message">
+                    Don't use the long version silly...we don't need to be that specific...
+                  </div>
+                </div>
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Website</label>
+                <input type="text" ng-model="company.url">
+              </md-input-container>
+            </div>
+          </div><!-- layout-padding -->
+
+        </md-card>
+      </div><!-- right column -->
+
+    </div><!-- row -->
+
+    <div layout="row">
+
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Company Description
+        </p>
+        <p class="md-body-1">
+          Write a short description of your company.
+          This description will be included in every job posting associated with your company, as well as on the company index page.
+        </p>
+        <p class="md-body-1">
+          Markdown syntax is okay.
+        </p>
+      </div><!-- left column -->
+
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">description</md-icon>
+            Description
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Description</label>
+                <textarea type="text" ng-model="company.li" rows="10"></textarea>
+              </md-input-container>
+            </div>
+
+          </div><!-- layout-padding -->
+
+        </md-card>
+      </div><!-- right column -->
+
+  </div><!-- row -->
+
+    <div layout="row">
+
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Social Media
+        </p>
+      </div><!-- left column -->
+
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">share</md-icon>
+            Social Media
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>LinkedIn</label>
+                <input type="text" ng-model="company.li">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Facebook</label>
+                <input type="text" ng-model="company.fb">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Twitter</label>
+                <input type="text" ng-model="company.twitter">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Instagram</label>
+                <input type="text" ng-model="company.instagram">
+              </md-input-container>
+            </div>
+
+
+          </div><!-- layout-padding -->
+
+        </md-card>
+      </div><!-- right column -->
+
+  </div><!-- row -->
+
+  <div layout="row" layout-align="end" layout-padding md-theme="grey">
+    <md-button ng-show="!profile.employer" layout class="md-primary" ui-sref="home.jobs">
+      Save company
+      <md-icon>arrow_forward</md-icon>
+    </md-button>
+  </div><!-- row -->
+
+  <div layout="row" style="min-height: 140px;">
+    <div flex></div>
+  </div><!-- row -->
+
+
+  </md-content><!-- column -->
+
+</section><!-- row -->
