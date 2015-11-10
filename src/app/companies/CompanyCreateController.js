@@ -9,11 +9,15 @@
   function CompanyCreateController ($log, $state, $stateParams, $mdDialog, $document, $mdToast, $scope, Companies, CurrentAuth) {
 
     var vm = this;
-    // vm.list = Companies.$array;
+    $log.log(CurrentAuth);
     vm.save = function () {
       var meta = {
-        "created_on": moment().format()
-      }
+        "created_on": moment().format(),
+        "status": "pending",
+        "accounts": new Object
+      };
+
+      meta.accounts[CurrentAuth.uid] = true;
 
       $log.log(_.merge(vm.data, meta));
 

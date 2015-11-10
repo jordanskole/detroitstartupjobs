@@ -100,6 +100,12 @@
         templateUrl: 'app/companies/detail.html',
         controller: 'CompanyDetailController',
         controllerAs: 'company'
+      })
+      .state('home.companies.edit', {
+        url: '/:id/edit',
+        templateUrl: 'app/companies/update.html',
+        controller: 'CompanyUpdateController',
+        controllerAs: 'company'
       });
 
     $urlRouterProvider.otherwise('/+/jobs/index');
