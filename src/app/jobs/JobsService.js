@@ -10,13 +10,14 @@
     var itemsRef = new Firebase(FIREBASE_URL + "/jobs");
 
     var Jobs = $firebaseArray.$extend({
-      filterJobsByCompany: function (company) {
+      getJobsByCompany: function (company_id) {
+        var query = itemsRef.orderByChild("company_id").equalTo(company_id);
+        return $firebaseArray(query);
+      },
+      getJobsBySkill: function (skill) {
 
       },
-      filterJobsBySkill: function (skill) {
-
-      },
-      filterJobsBySalary: function (min, max) {
+      getJobsBySalary: function (min, max) {
 
       }
     });
