@@ -14,13 +14,19 @@
     };
     Jobs
       .$object($stateParams.id)
-      .$bindTo($scope, 'detail');
+      .$bindTo($scope, 'detail')
+      .then( function () {
+        vm.selectedCompany = Companies.$object($scope.detail.company_id);
+      });
 
     // get our companies for autocomplete
     vm.companies = Companies.$array;
-    vm.selectedCompanyChange = function () {
-      $scope.detail.company_id = vm.selectedCompany.$id;
-      $log.log($scope.detail.company_id);
+    // vm.selectedCompany = Companies.$object($scope.detail.company_id);
+
+    vm.selectedCompanyChange = function (company) {
+      if (company) {
+        $scope.detail.company_id = company.$id;        
+      }
     }
   }
 
