@@ -60,10 +60,6 @@
         </md-menu-item>
       </md-menu-content>
     </md-menu>
-
-    <md-button ng-if="home.account.employer && home.account.verified" ng-click="home.createJob($event)" class="md-icon-button md-fab md-warn md-mini" aria-label="Add a Job">
-      <md-icon>add</md-icon>
-    </md-button>
   </div>
 </md-toolbar>
 
@@ -99,3 +95,19 @@
 
   <div flex></div>
 </section>
+
+<md-fab-speed-dial ng-if="home.account.employer && home.account.verified" md-direction="left" class="md-fab-bottom-right md-scale md-hover-full" ng-mouseenter="true" >
+  <md-fab-trigger>
+    <md-button aria-label="Add..." class="md-fab md-warn">
+      <md-icon>add</md-icon>
+    </md-button>
+  </md-fab-trigger>
+  <md-fab-actions>
+    <md-button ng-click="home.createJob($event)" aria-label="Add Job Posting" class="md-fab md-mini" >
+      <md-icon>work</md-icon>
+    </md-button>
+    <md-button ui-sref="home.companies.create" aria-label="Add Business" class="md-fab md-mini">
+      <md-icon>business</md-icon>
+    </md-button>
+  </md-fab-actions>
+</md-fab-speed-dial>

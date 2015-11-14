@@ -6,7 +6,7 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController ($log, $state, $mdDialog, $document, $mdToast, CurrentAuth, Accounts, Jobs) {
+  function HomeController ($scope, $timeout, $log, $state, $mdDialog, $document, $mdToast, CurrentAuth, Accounts, Jobs) {
 
     var vm = this;
     if (CurrentAuth) {
@@ -49,6 +49,9 @@
         $mdToast.show($mdToast.simple().content('Job Posted!').position('bottom right'));
       });
     }
+
+    // fab speed dial
+    vm.isOpen = false;
 
   }
 

@@ -24,7 +24,7 @@
     // set our material design theme
     $mdThemingProvider.theme('default')
       .primaryPalette('teal')
-      .accentPalette('cyan')
+      .accentPalette('indigo')
       .backgroundPalette('grey');
 
     // Configure a dark theme
