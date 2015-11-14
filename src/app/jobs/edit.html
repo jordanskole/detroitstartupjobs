@@ -1,125 +1,237 @@
-<md-subheader>
-  Jobs Index &raquo; <span class="md-warn">Now Editing: {{ detail.title }}</span>
-</md-subheader>
+<section layout="row" flex layout-align="center">
 
-<div flex layout="row">
-  <div flex="35" layout="column">
+  <md-content flex layout="column">
 
-    <md-card>
-      <md-card-content>
-        <h2 class="md-title">Company Information</h2>
-        <form name="companyName">
+    <div flex layout="row">
+      <h1 class="md-headline">Editing job posting</h1>
+    </div><!-- row -->
 
-          <md-autocomplete
-            name="auto"
-            md-selected-item="job.selectedCompany"
-            md-search-text-change="job.searchCompanyChange(job.searchText)"
-            md-search-text="job.searchCompany"
-            md-selected-item-change="job.selectedCompanyChange(company)"
-            md-items="company in job.companies | filter:job.searchCompany"
-            md-item-text="company.name"
-            md-floating-label="Company"
-            required>
-            <md-item-template>
-              <span md-highlight-text="job.searchCompany" md-highlight-flags="^i">{{company.name}}</span>
-            </md-item-template>
-            <div ng-messages="companyName.auto.$error">
-              <div ng-message="required">This is required.</div>
-            </div><!-- error -->
-            <md-not-found>
-              <span ui-sref="home.companies.create">
-                Create "{{ job.searchCompany }}"!
-              </span>
-            </md-not-found>
-          </md-autocomplete>
-        </form>
-      </md-card-content>
-    </md-card>
+    <div flex layout="row">
 
-    <md-card>
-      <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{detail.location}}&zoom=14&size=600x300&maptype=roadmap
-        &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI" class="md-card-image" alt="" />
-      <md-card-content>
-        <h2 class="md-title">Location:</h2>
-        <p>
-          {{ detail.location }}
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Basic information
         </p>
-      <md-divider></md-divider>
-      <h3 class="md-subhead">Other Jobs Listed in {{ detail.location }}:</h3>
-      <md-list flex>
-        <md-list-item href="?test" flex>
-          I'm a Job
-        </md-list-item>
-        <md-list-item href="?test" flex>
-          I'm a different job
-        </md-list-item>
-      </md-list>
-      </md-card-content>
-    </md-card>
+      </div><!-- left column -->
 
-  </div><!-- left column -->
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">work</md-icon>
+            Basic Information
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
 
-  <div flex-offset="5" flex>
-    <md-card>
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h1 class="md-title">{{ detail.title }}</h1>
-          <span flex></span>
-          <span flex></span>
-          <md-button ui-sref="home.jobs.detail({ id: detail.$id })" class="md-icon-button" aria-label="Favorite Job Post">
-            <md-icon>save</md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="favorite">
-            <md-icon>help</md-icon>
-          </md-button>
-        </div><!-- toolbar tools -->
-      </md-toolbar>
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Job Title</label>
+                <input type="text" ng-model="detail.title">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Summary</label>
+                <textarea type="text" ng-model="detail.summary"></textarea>
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column">
+              <md-input-container flex>
+                <label>Job Posting URL</label>
+                <input type="text" ng-model="detail.url">
+              </md-input-container>
+            </div>
+
+            <div layout layout-sm="column" layout-align="center">
+              <h2 class="md-subhead">Skills:</h2>
+              <md-chips class="custom-chips" ng-model="detail.skills"></md-chips>
+            </div>
+          </div><!-- layout-padding -->
+
+        </md-card>
+      </div><!-- right column -->
+
+    </div><!-- row -->
+
+    <div flex layout="row">
+
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Company information
+        </p>
+      </div><!-- left column -->
+
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">business</md-icon>
+            Company information
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+
+          <div layout-padding>
+            <form name="companyName">
+              <md-autocomplete
+                name="auto"
+                md-selected-item="job.selectedCompany"
+                md-search-text-change="job.searchCompanyChange(job.searchText)"
+                md-search-text="job.searchCompany"
+                md-selected-item-change="job.selectedCompanyChange(company)"
+                md-items="company in job.companies | filter:job.searchCompany"
+                md-item-text="company.name"
+                md-floating-label="Company"
+                required>
+                <md-item-template>
+                  <span md-highlight-text="job.searchCompany" md-highlight-flags="^i">{{company.name}}</span>
+                </md-item-template>
+                <div ng-messages="companyName.auto.$error">
+                  <div ng-message="required">This is required.</div>
+                </div><!-- error -->
+                <md-not-found>
+                  <span ui-sref="home.companies.create">
+                    Create "{{ job.searchCompany }}"!
+                  </span>
+                </md-not-found>
+              </md-autocomplete>
+            </form>
 
 
-      <md-card-content>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex="70">
+                <label>Company Address</label>
+                <input type="text" ng-model="job.selectedCompany.street" disabled>
+              </md-input-container>
 
-        <md-input-container class="md-block">
-          <label>Summary:</label>
-          <textarea type="text" ng-model="detail.summary" md-maxlength="150"></textarea>
-        </md-input-container>
+              <md-input-container flex>
+                <label>Address 2</label>
+                <input type="text" ng-model="job.selectedCompany.street2" disabled>
+              </md-input-container>
+            </div>
 
-        <div layout-padding></div>
+            <div layout layout-sm="column">
+              <md-input-container flex="50">
+                <label>City</label>
+                <input type="text" ng-model="job.selectedCompany.city" disabled>
+              </md-input-container>
 
-        <md-input-container class="md-block">
-          <label>URL:</label>
-          <input type="text" ng-model="detail.url">
-        </md-input-container>
+              <md-input-container flex="25">
+                <label>State</label>
+                <input type="text" ng-model="job.selectedCompany.state" disabled>
+              </md-input-container>
 
-        <h2 class="md-subhead">Skills:</h2>
-        <md-chips class="custom-chips" ng-model="detail.skills"></md-chips>
+              <md-input-container flex="25">
+                <label>Postal Code</label>
+                <input name="postalCode" ng-model="job.selectedCompany.postal_code" disabled>
+              </md-input-container>
+            </div>
 
-        <div layout-padding></div>
+          </div><!-- layout-padding -->
 
-        <md-input-container class="md-block">
-          <label>About the Role:</label>
-          <textarea type="text" ng-model="detail.description" rows="4" minlength="255"></textarea>
-        </md-input-container>
+        </md-card>
+      </div><!-- right column -->
 
-        <div layout-padding></div>
+    </div><!-- row -->
 
-        <md-input-container class="md-block">
-          <label>Responsibilities:</label>
-          <textarea type="text" ng-model="detail.responsibility" rows="4" minlength="255"></textarea>
-        </md-input-container>
+    <div flex layout="row">
 
-        <div layout-padding></div>
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          About the role
+        </p>
+        <p>
 
-        <md-input-container class="md-block">
-          <label>Requirements:</label>
-          <textarea type="text" ng-model="detail.requirements" rows="4" minlength="255"></textarea>
-        </md-input-container>
+        </p>
+      </div><!-- left column -->
 
-      </md-card-content>
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">work</md-icon>
+            About the role
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
 
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>About the role</label>
+                <textarea type="text" ng-model="detail.description"></textarea>
+              </md-input-container>
+            </div>
+          </div><!-- layout-padding -->
 
-      <div class="md-actions" layout="row" layout-align="end center" style="margin-right: 20px;">
-        <md-button>Save</md-button>
-      </div>
-    </md-card>
-  </div><!-- right column -->
-</div><!-- row -->
+        </md-card>
+      </div><!-- right column -->
+
+    </div><!-- row -->
+
+    <div flex layout="row">
+
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Responsibilities
+        </p>
+        <p>
+
+        </p>
+      </div><!-- left column -->
+
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">work</md-icon>
+            Responsibilities
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Responsibilities</label>
+                <textarea type="text" ng-model="detail.responsibility"></textarea>
+              </md-input-container>
+            </div>
+          </div><!-- layout-padding -->
+
+        </md-card>
+      </div><!-- right column -->
+
+    </div><!-- row -->
+
+    <div flex layout="row">
+
+      <div flex="35" flex-offset="5" layout-padding>
+        <p class="md-subhead">
+          Requirements
+        </p>
+        <p>
+
+        </p>
+      </div><!-- left column -->
+
+      <div flex flex-offset="5">
+        <md-card flex>
+          <md-subheader class="md-primary">
+            <md-icon class="md-primary">work</md-icon>
+            Requirements
+          </md-subheader>
+          <md-progress-linear md-mode="determinate" value="20" flex></md-progress-linear>
+
+          <div layout-padding>
+            <div layout layout-sm="column" layout-align="center">
+              <md-input-container flex>
+                <label>Requirements</label>
+                <textarea type="text" ng-model="detail.requirements"></textarea>
+              </md-input-container>
+            </div>
+          </div><!-- layout-padding -->
+
+        </md-card>
+      </div><!-- right column -->
+
+    </div><!-- row -->
+
+  </md-content>
+</section>
