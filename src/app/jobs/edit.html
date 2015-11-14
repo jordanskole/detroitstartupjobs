@@ -4,11 +4,38 @@
 
 <div flex layout="row">
   <div flex="35" layout="column">
+
     <md-card>
       <md-card-content>
         <h2 class="md-title">Company Information</h2>
+        <form name="companyName">
+
+          <md-autocomplete
+            name="auto"
+            md-selected-item="job.selectedCompany"
+            md-search-text-change="job.searchCompanyChange(job.searchText)"
+            md-search-text="job.searchCompany"
+            md-selected-item-change="job.selectedCompanyChange(company)"
+            md-items="company in job.companies | filter:job.searchCompany"
+            md-item-text="company.name"
+            md-floating-label="Company"
+            required>
+            <md-item-template>
+              <span md-highlight-text="job.searchCompany" md-highlight-flags="^i">{{company.name}}</span>
+            </md-item-template>
+            <div ng-messages="companyName.auto.$error">
+              <div ng-message="required">This is required.</div>
+            </div><!-- error -->
+            <md-not-found>
+              <span ui-sref="home.companies.create">
+                Create "{{ job.searchCompany }}"!
+              </span>
+            </md-not-found>
+          </md-autocomplete>
+        </form>
       </md-card-content>
     </md-card>
+
     <md-card>
       <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{detail.location}}&zoom=14&size=600x300&maptype=roadmap
         &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI" class="md-card-image" alt="" />
@@ -29,6 +56,7 @@
       </md-list>
       </md-card-content>
     </md-card>
+
   </div><!-- left column -->
 
   <div flex-offset="5" flex>
