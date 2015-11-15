@@ -1,82 +1,175 @@
-<md-subheader>
-  Jobs Index &raquo; {{ job.detail.title }}
-</md-subheader>
+<section layout="row" flex layout-align="center">
 
-<div flex layout="row">
-  <div flex="35" layout="column">
-    <md-card>
-      <md-card-content>
-        <h2 class="md-title">Company Information</h2>
-      </md-card-content>
-    </md-card>
-    <md-card>
-      <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{job.detail.location}}&zoom=14&size=600x300&maptype=roadmap
-        &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI" class="md-card-image" alt="" />
-      <md-card-content>
-        <h2 class="md-title">Location:</h2>
-        <p>
-          {{ job.detail.location }}
-        </p>
-      <md-divider></md-divider>
-      <h3 class="md-subhead">Other Jobs Listed in {{ job.detail.location }}:</h3>
-      <md-list flex>
-        <md-list-item href="?test" flex>
-          I'm a Job
-        </md-list-item>
-        <md-list-item href="?test" flex>
-          I'm a different job
-        </md-list-item>
-      </md-list>
-      </md-card-content>
-    </md-card>
-  </div><!-- left column -->
+  <md-content flex layout="column">
 
-  <div flex-offset="5" flex>
-    <md-card>
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h1 class="md-title">{{ job.detail.title }}</h1>
-          <span flex></span>
-          <md-button ng-show="!job.myJob()" class="md-icon-button" aria-label="Favorite Job Post">
-            <md-icon>favorite_border</md-icon>
-          </md-button>
-          <md-button ng-show="job.myJob()" ui-sref="home.jobs.edit({id: job.detail.$id })" class="md-icon-button" aria-label="Edit Job Post">
-            <md-icon>mode_edit</md-icon>
-          </md-button>
-          <md-button href="{{ job.detail.url }}" class="md-icon-button" aria-label="Apply on Site">
-            <md-icon>exit_to_app</md-icon>
-          </md-button>
-        </div><!-- toolbar tools -->
-      </md-toolbar>
-      <md-card-content>
+    <div flex layout="row">
+      <h1 class="md-headline">About the job</h1>
+    </div><!-- row -->
 
-        <h2 class="md-subhead">Summary:</h2>
-        <p>
-          {{ job.detail.summary }}
-        </p>
+    <div flex layout="row">
 
-        <h2 class="md-subhead">Skills:</h2>
-        <md-chips class="custom-chips" ng-model="job.detail.skills" readonly="true"></md-chips>
+      <div flex>
 
-        <h2 class="md-subhead">About The Role:</h2>
-        <p>
-          {{ job.detail.description }}
-        </p>
+        <md-card flex>
+          <md-card-content>
+            <h2 class="md-title md-primary">
+              Basic information
+            </h2>
+            <md-divider></md-divider>
+            <p class="md-body-2">
+              Job Title:
+            </p>
+            <p>
+              {{ job.detail.title }}
+            </p>
+            <p class="md-body-2">
+              Summary:
+            </p>
+            <p>
+              {{ job.detail.summary }}
+            </p>
+            <p class="md-body-2">
+              Job Posting URL:
+            </p>
+            <p>
+              {{ job.detail.url }}
+            </p>
+            <p class="md-body-2">
+              Skills:
+            </p>
+            <md-chips class="custom-chips" ng-model="job.detail.skills"></md-chips>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-href="{{ job.detail.url }}" class="md-primary">
+              Apply on site
+              <md-icon>arrow_forward</md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card><!-- basic information -->
 
-        <h2 class="md-subhead">Responsibilities:</h2>
-        <p>
-          {{ job.detail.responsibility }}
-        </p>
+        <md-card>
+          <md-card-content>
+            <h2 class="md-title">
+              About {{ job.company.name }}
+            </h2>
+            <md-divider></md-divider>
+            <div layout-padding>
+              {{ job.company.description }}
+            </div>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-href="{{ job.detail.url }}" class="md-primary">
+              Apply on site
+              <md-icon>arrow_forward</md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card><!-- about company -->
 
-        <h2 class="md-subhead">Requirements:</h2>
-        <p>
-          {{ job.detail.requirements }}
-        </p>
-        
-      </md-card-content>
-      <div class="md-actions" layout="row" layout-align="end center" style="margin-right: 20px;">
-        <md-button href="{{ job.detail.url }}">Apply on Site</md-button>
-      </div>
-    </md-card>
-  </div><!-- right column -->
-</div><!-- row -->
+        <md-card flex>
+          <md-card-content>
+
+            <h2 class="md-title md-primary">
+              About the role
+            </h2>
+            <md-divider></md-divider>
+            <div>
+              {{ job.detail.description }}
+            </div>
+
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-href="{{ job.detail.url }}" class="md-primary">
+              Apply on site
+              <md-icon>arrow_forward</md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card><!-- job description -->
+
+        <md-card flex>
+          <md-card-content>
+
+            <h2 class="md-title md-primary">
+              Responsibilities
+            </h2>
+            <md-divider></md-divider>
+            <div>
+              {{ job.detail.responsibility }}
+            </div>
+
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-href="{{ job.detail.url }}" class="md-primary">
+              Apply on site
+              <md-icon>arrow_forward</md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card><!-- responsibilities -->
+
+        <md-card flex>
+          <md-card-content>
+
+            <h2 class="md-title md-primary">
+              Requirements
+            </h2>
+            <md-divider></md-divider>
+            <div>
+              {{ job.detail.requirements }}
+            </div>
+
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ng-href="{{ job.detail.url }}" class="md-primary">
+              Apply on site
+              <md-icon>arrow_forward</md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card><!-- requirements -->
+
+      </div><!-- left column -->
+
+      <div flex="35" layout="column">
+
+        <md-card>
+          <img ng-src="https://maps.googleapis.com/maps/api/staticmap?center={{ job.company.street }},{{ job.company.city }},{{ job.company.state }}
+            &zoom=14
+            &markers=color:red|{{ job.company.street }},{{ job.company.city }},{{ job.company.state }}
+            &size=400x200
+            &maptype=roadmap
+            &key=AIzaSyBEO6BhO_vejx0e51OowkbsxH2n2s3JBbI" class="md-card-image" alt="" />
+          <md-card-content>
+            <h2 class="md-title">Contact Information</h2>
+            <p>
+              {{ job.company.street }}<br>
+              {{ job.company.street2 }}<br>
+              {{ job.company.city }}, {{ job.company.state }} {{ job.company.zip }}<br>
+              United States
+            </p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button ui-sref="home.companies.detail({ id: job.company.$id })" class="md-primary">
+              View details
+            </md-button>
+          </md-card-actions>
+        </md-card>
+
+        <md-card>
+          <md-list class="md-no-style" layout-fill style="padding: 0px;">
+            <md-list-item ng-repeat="job in job.otherJobs" class="md-2-line" ng-click="home.go('home.jobs.detail', {id: job.$id})">
+              <div class="md-list-item-text">
+                <h3>{{ job.title }}</h3>
+                <p>
+                  <span ng-repeat="skill in job.skills" class="md-hue-1">{{ skill }}{{$last ? '' : ', '}}</span>
+                </p>
+                <md-icon class="md-secondary" ng-click="job.favorite = !job.favorite" ng-class="{'md-warn': job.favorite}" aria-label="Save to Favorites">{{ job.favorite ? 'favorite' : 'favorite_border' }}</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card>
+
+      </div><!-- right column -->
+
+    </div><!-- row -->
+
+  </md-content>
+</section>
