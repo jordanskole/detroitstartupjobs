@@ -29,7 +29,7 @@
 
         <md-card>
           <md-list class="md-no-style" layout-fill style="padding: 0px;">
-            <md-list-item ng-repeat="job in company.jobs" class="md-2-line" ng-click="jobs.go('home.jobs.detail', {id: job.$id})">
+            <md-list-item ng-repeat="job in company.jobs" class="md-2-line" ng-click="home.go('home.jobs.detail', {id: job.$id})">
               <div class="md-list-item-text">
                 <h3>{{ job.title }}</h3>
                 <p>
