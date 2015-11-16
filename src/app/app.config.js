@@ -9,7 +9,13 @@
   function config($locationProvider, $logProvider, toastrConfig, $mdThemingProvider) {
 
     // remove the # from urls
-    $locationProvider.html5Mode(true);
+    /*
+     * We need to turn this off if we want to host on gh-pages
+     * otherwise we return a 404 error on hard refresh or browse
+     * to that specific page.
+     */
+    // $locationProvider.html5Mode(true);
+
 
     // Enable log
     $logProvider.debugEnabled(true);
