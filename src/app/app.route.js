@@ -18,7 +18,7 @@
         url: '/logout?redirect',
         controller: function (Auth, $state, $stateParams, $mdToast) {
           Auth.$unauth();
-          $state.go($stateParams.redirect || 'home.jobs')
+          $state.go($stateParams.redirect || 'home.jobs.index')
           .then( function () {
             $mdToast.show(
               $mdToast.simple()
