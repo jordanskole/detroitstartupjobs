@@ -10,7 +10,9 @@
 
     var vm = this;
     vm.list = Jobs.$array;
-    vm.account = Accounts.$object(CurrentAuth.uid);
+    if (CurrentAuth) {
+      vm.account = Accounts.$object(CurrentAuth.uid);
+    }
     $log.log(vm.user);
 
     vm.goToSkill = function (chip) {
@@ -24,7 +26,7 @@
 
     vm.go = function (state, params) {
       $state.go(state, params);
-    }    
+    }
 
   }
 
